@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+</head>
+<body>
+    <h1>Ai-Help Dashboard</h1>
+    <h2>Selamat Datang/Welcome, {{ request.user.username }}</h2>
+<!--    <p>Email: {{ request.user.email }}</p>-->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left side navigation -->
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'chatbot_view' %}">Cipta Laporan Baharu</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="{% url 'user_tickets' %}">Papar Tiket Laporan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'landing_page' %}">Laman Utama Sistem</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/login/" method="post" class="form-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>

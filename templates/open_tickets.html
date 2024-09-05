@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open Tickets</title>
+</head>
+<body>
+    <h2>Open Tickets</h2>
+    <nav>
+        <a href="{% url 'closed_tickets' %}">View Closed Tickets</a> |  <!-- Link to Closed Tickets -->
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>HW Type</th>
+                <th>Apps SW</th>
+                <th>Report Type</th>
+                <th>Report Description</th>
+                <th>PC IP</th>
+                <th>Action Taken</th>
+                <th>Update Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.hw_type }}</td>
+                <td>{{ ticket.apps_sw }}</td>
+                <td>{{ ticket.report_type }}</td>
+                <td>{{ ticket.report_desc }}</td>
+                <td>{{ ticket.pc_ip }}</td>
+                <td>{{ ticket.act_taken }}</td>
+                <td>
+                    <form action="{% url 'update_ticket' ticket.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" name="action_taken" placeholder="Enter action" required>
+                        <button type="submit">Submit</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

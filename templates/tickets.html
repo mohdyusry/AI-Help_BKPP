@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tickets</title>
+</head>
+<body>
+    <h2>Tickets with Act stat='O'</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>HW Type</th>
+            <th>Apps SW</th>
+            <th>Report Type</th>
+            <th>Report Desc</th>
+        </tr>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.hw_type }}</td>
+            <td>{{ ticket.apps_sw }}</td>
+            <td>{{ ticket.report_type }}</td>
+            <td>{{ ticket.report_desc }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'admin_dashboard' %}">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Response</title>
+</head>
+<body>
+    <h2>Chatbot Response</h2>
+    <p><strong>Recommended Action:</strong> {{ action }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="hw_type" value="{{ hw_type }}">
+        <input type="hidden" name="apps_sw" value="{{ apps_sw }}">
+        <input type="hidden" name="report_type" value="{{ report_type }}">
+        <input type="hidden" name="report_desc" value="{{ report_desc }}">
+        <input type="hidden" name="pc_ip" value="{{ pc_ip }}">
+        <input type="hidden" name="action" value="{{ action }}">
+
+        <label for="resolved">Did this solve your issue?</label><br>
+        <input type="radio" name="resolved" value="yes" id="yes"> Yes<br>
+        <input type="radio" name="resolved" value="no" id="no"> No<br>
+
+        <button type="submit" name="submit_feedback">Submit Feedback</button>
+    </form>
+
+    <p><strong>Is this solved your issue? Click "No" to take it for a technician or click the button below to get another suggestion from ChatGPT:</strong></p>
+
+    <!-- Form to generate a new recommendation using ChatGPT -->
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="hw_type" value="{{ hw_type }}">
+        <input type="hidden" name="apps_sw" value="{{ apps_sw }}">
+        <input type="hidden" name="report_type" value="{{ report_type }}">
+        <input type="hidden" name="report_desc" value="{{ report_desc }}">
+        <input type="hidden" name="pc_ip" value="{{ pc_ip }}">
+        <button type="submit" name="generate_new_action">Generate New Action</button>
+    </form>
+
+    {% if chatgpt_response %}
+    <div>
+        <h3>ChatGPT Recommendation</h3>
+        <textarea rows="4" cols="50" readonly>{{ chatgpt_response }}</textarea>
+    </div>
+    {% endif %}
+
+    <nav>
+        <!-- Link to the appropriate dashboard based on user role -->
+        {% if user.is_admin %}
+            <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+        {% elif user.is_technician %}
+            <a href="{% url 'technician_dashboard' %}">Technician Dashboard</a>
+        {% elif user.is_user %}
+            <a href="{% url 'user_dashboard' %}">User Dashboard</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- user_tickets.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Tickets</title>
+</head>
+<body>
+    <h2>Your Raised Tickets</h2>
+    <nav>
+        <a href="{% url 'user_dashboard' %}">Back to Dashboard</a> |
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>USERNAME</th>
+                <th>EMAIL</th>
+                <th>HW Type</th>
+                <th>Apps SW</th>
+                <th>Report Type</th>
+                <th>Report Description</th>
+                <th>PC IP</th>
+                <th>Action Taken</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.id }}</td>
+                <td>{{ ticket.user_name }}</td>
+                <td>{{ ticket.email }}</td>
+                <td>{{ ticket.hw_type }}</td>
+                <td>{{ ticket.apps_sw }}</td>
+                <td>{{ ticket.report_type }}</td>
+                <td>{{ ticket.report_desc }}</td>
+                <td>{{ ticket.pc_ip }}</td>
+                <td>{{ ticket.act_taken }}</td>
+                <td>{{ ticket.act_stat }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cipta Laporan Baharu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary, .btn-secondary {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .sidebar-sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            height: calc(100vh - 56px);
+            padding-top: 0.5rem;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        /* Chatbot Styles */
+        #chatbox {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+        }
+        #chatlogs {
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        #send-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #send-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'landing_page' %}">Laman Utama Sistem</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/logout/" method="post" class="form-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4 main-content">
+                <h1>Laporan Ai-Help</h1>
+
+                <div class="table-responsive">
+                    <section id="user-info" class="section-border">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                {% csrf_token %}
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan="2" class="table-title">Maklumat Pegawai</th>
+                                        <th scope="col" colspan="2" class="table-title">Maklumat Perkakasan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Nama Pegawai</th>
+                                        <td>{{ form.user_name }}</td>
+                                        <th>Persekitaran</th>
+                                        <td>{{ form.env }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Emel</th>
+                                        <td>{{ form.email }}</td>
+                                        <th>Nama PC</th>
+                                        <td>{{ form.pc_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bahagian/Unit</th>
+                                        <td>{{ form.dprt }}</td>
+                                        <th>IP PC</th>
+                                        <td>{{ form.pc_ip }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Jawatan</th>
+                                        <td>{{ form.post }}</td>
+                                        <th>Serial No Perkakasan</th>
+                                        <td>{{ form.hw_sn }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+                <form id="ticket-form" method="post">
+                     <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="hw_type">Laporan Berkenaan:</label>
+                            <select id="hw_type" name="hw_type" class="form-control">
+                                <option value="">Pilih Laporan Yang Berkenaan</option>
+                                {% for option in hw_type_options %}
+                                <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="apps_sw">Aplikasi/Perisian Terlibat:</label>
+                            <select id="apps_sw" name="apps_sw" class="form-control">
+                                <option value="">Pilih Aplikasi/Perisian</option>
+                                {% for option in apps_sw_options %}
+                                <option value="{{ option }}">{{ option }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="report_desc">Keterangan Masalah:</label>
+                        <textarea id="report_desc" name="report_desc" class="form-control"></textarea
+                    </div> 
+
+                    <div id="chatbox">
+                        <h2>Laporan Kerosakan</h2>
+                        <div id="chatlogs"></div>
+                    </div>
+
+                    <div class="form-row mt-4">
+                        <div class="form-group col-md-6">
+                            <label for="id_date_created">Tarikh Cipta:</label>
+                            {{ form.date_created }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="id_time_created">Waktu Cipta:</label>
+                            {{ form.time_created }}
+                        </div>
+                    </div>
+                    <button id="send-button" type="button" class="btn btn-primary">Cipta Laporan</button>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary">Batal Laporan</a>
+                </form>
+
+                <div id="recommendation" class="mt-4"></div>
+
+                <script>
+                    $(document).ready(function() {
+                        $('#send-button').on('click', function(event) {
+                            event.preventDefault();
+                            var hw_type = $("#hw_type").val();
+                            var apps_sw = $("#apps_sw").val();
+                            var report_desc = $("#report_desc").val();
+
+                            if (hw_type && apps_sw && report_desc) {
+                                // Send AJAX request for recommendation
+                                $.ajax({
+                                    url: "{% url 'get_recommendation' %}",
+                                    type: "POST",
+                                    data: {
+                                        hw_type: hw_type,
+                                        apps_sw: apps_sw,
+                                        report_desc: report_desc,
+                                        csrfmiddlewaretoken: '{{ csrf_token }}'
+                                    },
+                                    success: function(response) {
+                                        $('#recommendation').html('<div class="alert alert-success">Tindakan yang disyorkan: ' + response.recommended_action + '</div>');
+                                        $("#chatlogs").append("<p><strong>Bot:</strong> " + response.recommended_action + "</p>");
+                                        $("#report_desc").val(''); // Clear input field
+                                    },
+                                    error: function(xhr, status, error) {
+                                        $('#recommendation').html('<div class="alert alert-danger">There was an error processing your request. Please try again later.</div>');
+                                    }
+                                });
+                            } else {
+                                alert('Sila lengkapkan semua maklumat!');
+                            }
+                        });
+                    });
+                </script>
+            </main>
+        </div>
+    </div>
+    <script>
+        window.embeddedChatbotConfig = {
+        chatbotId: "NOySOOfsaDm7NlexGmChm",
+        domain: "www.chatbase.co"
+        }
+        </script>
+        <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="NOySOOfsaDm7NlexGmChm"
+        domain="www.chatbase.co"
+        defer>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Helpdesk BKPP</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            background-image: url('{% static 'images/image proposal.jpg' %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .overlay {
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .btn {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>Selamat Datang ke Antaramuka Sistem Helpdesk BKPP (Ai-HELP)</h1>
+        <h3>Ai-Help merupakan sistem meja bantuan berteraskan kecerdasan buatan (AI) pertama</h3>
+        
+        <p><a href="{% url 'login' %}" class="btn btn-primary">Login Ke Ai-HELP</a>
+        <a href="{% url 'signup' %}" class="btn btn-secondary">Daftar Baharu/Signup</a></p>
+    </div>
+    <script>
+        window.embeddedChatbotConfig = {
+        chatbotId: "NOySOOfsaDm7NlexGmChm",
+        domain: "www.chatbase.co"
+        }
+        </script>
+        <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="NOySOOfsaDm7NlexGmChm"
+        domain="www.chatbase.co"
+        defer>
+        </script>
+</body>
+</html>

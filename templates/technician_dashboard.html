@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Technician Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, {{ request.user.username }}</h2>
+    <nav>
+        <a href="{% url 'open_tickets' %}">Open Tickets</a> |
+        <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" style="background: none; border: none; color: blue; text-decoration: underline; cursor: pointer;">Logout</button>
+        </form>
+    </nav>
+</body>
+</html>

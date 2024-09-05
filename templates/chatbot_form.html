@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Form</title>
+</head>
+<body>
+    <h2>Submit Your Issue</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <nav>
+        <!-- Link to the appropriate dashboard based on user role -->
+        {% if user.is_admin %}
+            <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+        {% elif user.is_technician %}
+            <a href="{% url 'technician_dashboard' %}">Technician Dashboard</a>
+        {% elif user.is_user %}
+            <a href="{% url 'user_dashboard' %}">User Dashboard</a>
+        {% else %}
+            <!-- Handle case where user role is not defined -->
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+        
+        <!-- Link to logout -->
+        <a href="{% url 'logout' %}">Logout</a>
+    </nav>
+</body>
+</html>
+
+
+
+
+
+
+
+

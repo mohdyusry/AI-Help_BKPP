@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <!-- Example of linking a CSS file -->
+</head>
+<body>
+    <header>
+        <h2>Welcome, {{ request.user.username }}</h2>
+        <p>Email: {{ request.user.email }}</p>
+        <nav>
+            <a href="{% url 'chatbot_view' %}">Chatbot</a> |
+            <!-- Update the logout link to use a form with POST method -->
+            <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: blue; text-decoration: underline; cursor: pointer;">Logout</button>
+            </form>
+        </nav>
+    </header>
+
+    <main>
+        <h3>Tickets with Act Stat 'O'</h3>
+        {% if tickets %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>HW Type</th>
+                    <th>Apps SW</th>
+                    <th>Report Type</th>
+                    <th>Action Taken</th>
+                    <th>Actions_status</th> <!-- New column for action buttons -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                <tr>
+                    <td>{{ ticket.id }}</td>
+                    <td>{{ ticket.hw_type }}</td>
+                    <td>{{ ticket.apps_sw }}</td>
+                    <td>{{ ticket.report_type }}</td>
+                    <td>{{ ticket.act_taken }}</td>
+                    <td>{{ ticket.act_stat }}</td>
+
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No tickets with 'O' status found.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

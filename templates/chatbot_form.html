@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Your Issue</title>
+    <!-- Adding Bootstrap for better styling and responsiveness -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Masukkan Laporan Anda</h2>
+
+        <!-- Form section -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="post" class="border p-4 bg-light rounded">
+                    {% csrf_token %}
+
+                    <!-- User Profile Section -->
+                    <h5 class="text-primary mb-3">Maklumat Pengguna</h5>
+                    <div class="form-group">
+                        {{ form.user_name.label_tag }}
+                        {{ form.user_name }}
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            {{ form.dprt.label_tag }}
+                            {{ form.dprt }}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{ form.post.label_tag }}
+                            {{ form.post }}
+                        </div>
+                        <div class="form-group col-md-4">
+                            {{ form.env.label_tag }}
+                            {{ form.env }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.pc_name.label_tag }}
+                        {{ form.pc_name }}
+                    </div>
+
+                    <!-- Hardware and Report Section -->
+                    <h5 class="text-primary mb-3">Maklumat Perkakasan dan Laporan</h5>
+                    <div class="form-group">
+                        {{ form.pc_ip.label_tag }}
+                        {{ form.pc_ip }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.report_type.label_tag }}
+                        {{ form.report_type }}
+                    </div>
+                    <div class="form-group" id="hardware-section">
+                        {{ form.hw_type.label_tag }}
+                        {{ form.hw_type }}
+                    </div>
+                    <div class="form-group" id="software-section">
+                        {{ form.apps_sw.label_tag }}
+                        {{ form.apps_sw }}
+                    </div>
+
+                    <!-- Report Description -->
+                    <h5 class="text-primary mb-3">Penerangan Masalah</h5>
+                    <div class="form-group">
+                        {{ form.report_desc.label_tag }}
+                        {{ form.report_desc }}
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Navigation links section -->
+        <nav class="mt-4 text-center">
+            {% if user.is_admin %}
+                <a href="{% url 'admin_dashboard' %}" class="btn btn-info">Admin Dashboard</a>
+            {% elif user.is_technician %}
+                <a href="{% url 'technician_dashboard' %}" class="btn btn-info">Technician Dashboard</a>
+            {% elif user.is_user %}
+                <a href="{% url 'user_dashboard' %}" class="btn btn-info">User Dashboard</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-warning">Login</a>
+            {% endif %}
+            <a href="{% url 'logout' %}" class="btn btn-danger ml-2">Logout</a>
+        </nav>
+    </div>
+
+    <!-- JavaScript to handle dynamic form fields and auto-fill pc_name -->
+    <script>
+        // Function to update pc_name based on dprt, post, and env selections
+        function updatePcName() {
+            var dprt = document.getElementById("id_dprt").value;
+            var post = document.getElementById("id_post").value;
+            var env = document.getElementById("id_env").value;
+            document.getElementById("id_pc_name").value = dprt + "-" + post + "-" + env;
+        }
+
+        // Toggle fields based on report_type selection
+        function toggleReportFields() {
+            var reportType = document.getElementById("id_report_type").value;
+            var hardwareSection = document.getElementById("hardware-section");
+            var softwareSection = document.getElementById("software-section");
+
+            if (reportType === "hw") {
+                hardwareSection.style.display = "block";
+                softwareSection.style.display = "none";
+            } else if (reportType === "sw") {
+                hardwareSection.style.display = "none";
+                softwareSection.style.display = "block";
+            } else {
+                hardwareSection.style.display = "none";
+                softwareSection.style.display = "none";
+            }
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("id_dprt").addEventListener("change", updatePcName);
+            document.getElementById("id_post").addEventListener("change", updatePcName);
+            document.getElementById("id_env").addEventListener("change", updatePcName);
+            document.getElementById("id_report_type").addEventListener("change", toggleReportFields);
+
+            // Initial toggle for report fields
+            toggleReportFields();
+        });
+    </script>
+
+    <!-- Adding Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

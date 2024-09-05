@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40;
+        }
+        .sidebar a {
+            color: #ffffff;
+            padding: 10px 15px;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+        }
+        .main-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+                <div class="sidebar-sticky">
+                    <h4 class="text-white text-center mt-3">Ai-Help Dashboard</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'chatbot_view' %}">Cipta Laporan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'user_tickets' %}">Papar Tiket Laporan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'landing_page' %}">Laman Utama</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/login/" method="post" class="form-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link text-white">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 col-lg-10 main-content">
+                <h2>Selamat Datang, {{ request.user.username }}</h2>
+                <p>Laman ini merupakan laman bagi mencipta laporan baharu dan menyemak laporan dan tindakan yang telah dibuat.</p>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

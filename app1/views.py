@@ -9,7 +9,7 @@ from .forms import ChatbotForm, CustomUserCreationForm
 from .models import Ticket
 import time
 import openai
-from openai.error import RateLimitError
+# from openai.error import RateLimitError
 from .chatbot import recommend_action, update_model_with_new_data
 
 # Set your OpenAI API key here

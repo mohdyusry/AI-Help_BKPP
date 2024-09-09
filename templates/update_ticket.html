@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Ticket #{{ ticket.ticket_no }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Respond to Ticket #{{ ticket.ticket_no }}</h1>
+        <p><strong>Description:</strong> {{ ticket.report_desc }}</p>
+
+        {% if error_message %}
+        <div class="alert alert-danger">{{ error_message }}</div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="act_taken">Action Taken</label>
+                <textarea class="form-control" id="act_taken" name="action_taken" required>{{ ticket.act_taken }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="act_stat">Action Status</label>
+                <input type="text" class="form-control" id="act_stat" name="act_stat" value="{{ ticket.act_stat }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Response</button>
+        </form>
+    </div>
+</body>
+</html>

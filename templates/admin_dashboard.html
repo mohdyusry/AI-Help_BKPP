@@ -1,55 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Dashboard</title>
-    <!-- Example of linking a CSS file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pentadbir</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40;
+        }
+        .sidebar a {
+            color: #ffffff;
+            padding: 15px 20px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        .sidebar a:hover {
+            background-color: #495057;
+            text-decoration: none;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+        .card {
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .table thead {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .greeting {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h2>Welcome, {{ request.user.username }}</h2>
-        <p>Email: {{ request.user.email }}</p>
-        <nav>
-            <a href="{% url 'chatbot_view' %}">Chatbot</a> |
-            <!-- Update the logout link to use a form with POST method -->
-            <form id="logout-form" action="{% url 'logout' %}" method="post" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit" style="background: none; border: none; color: blue; text-decoration: underline; cursor: pointer;">Logout</button>
-            </form>
-        </nav>
-    </header>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Dashboard Pentadbir</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
 
-    <main>
-        <h3>Tickets with Act Stat 'O'</h3>
-        {% if tickets %}
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>HW Type</th>
-                    <th>Apps SW</th>
-                    <th>Report Type</th>
-                    <th>Action Taken</th>
-                    <th>Actions_status</th> <!-- New column for action buttons -->
-                </tr>
-            </thead>
-            <tbody>
-                {% for ticket in tickets %}
-                <tr>
-                    <td>{{ ticket.id }}</td>
-                    <td>{{ ticket.hw_type }}</td>
-                    <td>{{ ticket.apps_sw }}</td>
-                    <td>{{ ticket.report_type }}</td>
-                    <td>{{ ticket.act_taken }}</td>
-                    <td>{{ ticket.act_stat }}</td>
+    <!-- Main Layout -->
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar py-4">
+                <ul class="nav flex-column">
+                    <h4 class="text-white text-center mt-3">Ai-Help Dashboard</h4>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'chatbot_view' %}">Cipta Laporan</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="{% url 'logout' %}" method="post" class="form-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link text-white">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
 
-                    
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <p>No tickets with 'O' status found.</p>
-        {% endif %}
-    </main>
+            <!-- Main Content -->
+            <main class="col-md-9 col-lg-10">
+                <!-- Greeting Section in a Card -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Selamat datang, {{ user.username }}!</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Anda berada di Dashboard Pentadbir. Sila semak dan uruskan laporan di bawah.</p>
+                    </div>
+                </div>
+
+                <!-- Filter Form -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mb-4">Maklumat Ticket Laporan</h4>
+                        <form method="get" class="form-inline mb-4">
+                            <div class="form-group mr-2">
+                                <label for="report_type" class="mr-2">Jenis Laporan:</label>
+                                <select name="report_type" id="report_type" class="form-control">
+                                    <option value="">Semua</option>
+                                    <option value="HW" {% if report_type == "HW" %}selected{% endif %}>Hardware</option>
+                                    <option value="SW" {% if report_type == "SW" %}selected{% endif %}>Software</option>
+                                </select>
+                            </div>
+                            <div class="form-group mr-2">
+                                <label for="act_stat" class="mr-2">Status Tindakan:</label>
+                                <select name="act_stat" id="act_stat" class="form-control">
+                                    <option value="">Semua</option>
+                                    <option value="O" {% if act_stat == "O" %}selected{% endif %}>Open</option>
+                                    <option value="S" {% if act_stat == "S" %}selected{% endif %}>Solved</option>
+                                </select>
+                            </div>
+                            <div class="form-group mr-2">
+                                <label for="taken_by" class="mr-2">Tindakan Oleh:</label>
+                                <input type="text" name="taken_by" id="taken_by" class="form-control" value="{{ taken_by }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Tapis</button>
+                        </form>
+
+                        <!-- Sorting Links -->
+                        <div class="mb-3">
+                            <strong>Sort By:</strong>
+                            <a href="?sort_by=user_name&sort_order={% if sort_by == 'user_name' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Nama Pegawai</a> |
+                            <a href="?sort_by=date_created&sort_order={% if sort_by == 'date_created' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">Tarikh Cipta Laporan</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tickets Table -->
+                <div class="card">
+                    <div class="card-body">
+                        {% if tickets %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>No Ticket</th>
+                                        <th>Nama Pegawai</th>
+                                        <th>Jenis Laporan</th>
+                                        <th>Deskripsi Laporan</th>
+                                        <th>Tindakan Diambil</th>
+                                        <th>Tarikh Cipta Laporan</th>
+                                        <th>Status Tindakan</th>
+                                        <th>Tindakan Oleh</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ticket in tickets %}
+                                    <tr>
+                                        <td>{{ ticket.ticket_no }}</td>
+                                        <td>{{ ticket.user_name }}</td>
+                                        <td>{{ ticket.report_type }}</td>
+                                        <td>{{ ticket.report_desc }}</td>
+                                        <td>{{ ticket.act_taken }}</td>
+                                        <td>{{ ticket.date_created }}</td>
+                                        <td>{{ ticket.act_stat }}</td>
+                                        <td>{{ ticket.taken_by }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <p>No tickets found.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,46 +1,98 @@
-<!-- user_tickets.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Your Tickets</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senarai Ticket Laporan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+        .nav-link {
+            color: #007bff;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+        .card {
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Your Raised Tickets</h2>
-    <nav>
-        <a href="{% url 'user_dashboard' %}">Back to Dashboard</a> |
-        <a href="{% url 'logout' %}">Logout</a>
-    </nav>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>USERNAME</th>
-                <th>EMAIL</th>
-                <th>HW Type</th>
-                <th>Apps SW</th>
-                <th>Report Type</th>
-                <th>Report Description</th>
-                <th>PC IP</th>
-                <th>Action Taken</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for ticket in tickets %}
-            <tr>
-                <td>{{ ticket.id }}</td>
-                <td>{{ ticket.user_name }}</td>
-                <td>{{ ticket.email }}</td>
-                <td>{{ ticket.hw_type }}</td>
-                <td>{{ ticket.apps_sw }}</td>
-                <td>{{ ticket.report_type }}</td>
-                <td>{{ ticket.report_desc }}</td>
-                <td>{{ ticket.pc_ip }}</td>
-                <td>{{ ticket.act_taken }}</td>
-                <td>{{ ticket.act_stat }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+<div class="container">
+    <!-- Page Header -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Senarai Ticket Yang Telah Dibuat</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Navigation Links -->
+                    <nav class="nav mb-4">
+                        <a href="{% url 'user_dashboard' %}" class="nav-link">Kembali Ke Dashboard</a>
+                        <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                    </nav>
+
+                    <!-- Ticket Table -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Ticket No</th>
+                                    <th>Jenis Laporan</th>
+                                    <th>Jenis Perkakasan</th>
+                                    <th>Aplikasi/Perisian</th>
+                                    <th>Diskripsi Laporan</th>
+                                    <th>PC IP</th>
+                                    <th>Tindakan Diambil</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ticket in tickets %}
+                                <tr>
+                                    <td>{{ ticket.ticket_no }}</td>
+                                    <td>{{ ticket.report_type }}</td>
+                                    <td>{{ ticket.hw_type }}</td>
+                                    <td>{{ ticket.apps_sw }}</td>
+                                    <td>{{ ticket.report_desc }}</td>
+                                    <td>{{ ticket.pc_ip }}</td>
+                                    <td>{{ ticket.act_taken }}</td>
+                                    <td>
+                                        {% if ticket.act_stat == "O" %}
+                                            <span class="badge bg-warning text-dark">Open</span>
+                                        {% elif ticket.act_stat == "S" %}
+                                            <span class="badge bg-success">Solved</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">Unknown</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- No tickets found message -->
+                    {% if not tickets %}
+                    <p class="text-center">Tiada tiket laporan yang dijumpai.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

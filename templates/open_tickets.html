@@ -1,48 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Tickets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Open Tickets</h2>
-    <nav>
-        <a href="{% url 'closed_tickets' %}">View Closed Tickets</a> |  <!-- Link to Closed Tickets -->
-        <a href="{% url 'logout' %}">Logout</a>
-    </nav>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>HW Type</th>
-                <th>Apps SW</th>
-                <th>Report Type</th>
-                <th>Report Description</th>
-                <th>PC IP</th>
-                <th>Action Taken</th>
-                <th>Update Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for ticket in tickets %}
-            <tr>
-                <td>{{ ticket.id }}</td>
-                <td>{{ ticket.hw_type }}</td>
-                <td>{{ ticket.apps_sw }}</td>
-                <td>{{ ticket.report_type }}</td>
-                <td>{{ ticket.report_desc }}</td>
-                <td>{{ ticket.pc_ip }}</td>
-                <td>{{ ticket.act_taken }}</td>
-                <td>
-                    <form action="{% url 'update_ticket' ticket.id %}" method="post">
-                        {% csrf_token %}
-                        <input type="text" name="action_taken" placeholder="Enter action" required>
-                        <button type="submit">Submit</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <!-- Header for Open Tickets -->
+        <header class="d-flex justify-content-between align-items-center">
+            <h2>Maklumat Tiket Laporan Terbuka</h2>
+            <nav>
+                <a href="{% url 'closed_tickets' %}" class="btn btn-info">Papar Tiket Ditutup</a> <!-- Link to Closed Tickets -->
+                <a href="{% url 'technician_dashboard' %}" class="btn btn-info">Pulang ke Dashboard</a>
+                <form action="{% url 'logout' %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Keluar</button>
+                </form>
+            </nav>
+        </header>
+
+        <!-- Open Tickets Table -->
+        <section>
+            {% if tickets %}
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>No Ticket</th>
+                        <th>Nama Pegawai</th>
+                        <th>Jenis Laporan</th>
+                        <th>Deskripsi Laporan</th>
+                        <th>Tarikh Cipta Laporan</th>
+                        <th>Status Tindakan</th>
+                        <th>Tindakan</th> <!-- Link to update page -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.ticket_no }}</td>
+                        <td>{{ ticket.user_name }}</td>
+                        <td>{{ ticket.report_type }}</td>
+                        <td>{{ ticket.report_desc }}</td>
+                        <td>{{ ticket.date_created }}</td>
+                        <td>{{ ticket.act_stat }}</td>
+                        <td>
+                            <!-- Link to the page where action_taken can be updated -->
+                            <a href="{% url 'update_ticket' ticket.id %}" class="btn btn-primary btn-sm">Ambil Tindakan</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>Tiada Tiket Yang Perlu Diambil Tindakan.</p>
+            {% endif %}
+        </section>
+    </div>
 </body>
 </html>
-

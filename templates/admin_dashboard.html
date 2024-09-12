@@ -65,9 +65,6 @@
                         <a class="nav-link" href="{% url 'chatbot_view' %}">Cipta Laporan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'AdminDashboard' %}">Analisa Pelaporan</a>
-                    </li>
-                    <li class="nav-item">
                         <form action="{% url 'logout' %}" method="post" class="form-inline">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-link text-white">Logout</button>

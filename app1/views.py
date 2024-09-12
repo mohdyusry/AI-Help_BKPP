@@ -310,5 +310,5 @@ from app1.models import Ticket
 def dashboard_analysis(request):
     if request.user.is_admin:  # Ensure that only admin users can access the page
         total_tickets = Ticket.objects.count()  # Count total tickets
-        return render(request, 'AdminDashboard.html', {'total_tickets': total_tickets})
+        return render(request, 'dashboard_analysis.html', {'total_tickets': total_tickets})
     return redirect('login')  # Redirect non-admin users to the login page

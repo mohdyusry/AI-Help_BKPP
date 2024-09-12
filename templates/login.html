@@ -1,0 +1,103 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai-Help Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: #ffffff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group label {
+            margin-bottom: 10px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            font-size: 1rem;
+            display: block;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            width: 100%;
+        }
+
+        .btn-link,
+        .btn-secondary {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login Ai-Help</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+             </form>
+             {% if form.errors %}
+                <p style="color:red;">{{ form.errors }}</p>
+             {% endif %}
+             <p>Tiada lagi akaun pengguna? <a href="{% url 'signup' %}">Sila Daftar Di Sini</a></p>
+        </div>
+        <a href="{% url 'landing_page' %}" class="btn btn-secondary">Balik ke Laman Utama Ai-Help</a>
+    </div>
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "NOySOOfsaDm7NlexGmChm",
+            domain: "www.chatbase.co"
+        };
+    </script>
+    <script src="https://www.chatbase.co/embed.min.js" chatbotId="NOySOOfsaDm7NlexGmChm" domain="www.chatbase.co" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Login</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h2>Login</h2>-->
+<!--    <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        {{ form.as_p }}-->
+<!--        <button type="submit">Login</button>-->
+<!--    </form>-->
+<!--    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>-->
+<!--</body>-->
+<!--</html>-->

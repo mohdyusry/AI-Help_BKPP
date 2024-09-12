@@ -31,7 +31,6 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="row">
-                        <!-- User Profile Section -->
                         <div class="col-md-6">
                             <div class="form-group">
                                 {{ form.user_name.label_tag }}
@@ -40,94 +39,16 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                {{ form.dprt.label_tag }}
-                                {{ form.dprt }}
+                                {{ form.email.label_tag }}
+                                {{ form.email }}
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form.post.label_tag }}
-                                {{ form.post }}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form.env.label_tag }}
-                                {{ form.env }}
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form.pc_name.label_tag }}
-                                {{ form.pc_name }}
-                            </div>
-                        </div>
-
-                        <!-- Hardware and Software Sections (conditionally shown) -->
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                {{ form.report_type.label_tag }}
-                                {{ form.report_type }}
-                            </div>
-                        </div>
-
-                        <div class="col-md-6" id="hw_type_section">
-                            <div class="form-group">
-                                {{ form.hw_type.label_tag }}
-                                {{ form.hw_type }}
-                            </div>
-                        </div>
-
-                        <div class="col-md-6" id="apps_sw_section">
-                            <div class="form-group">
-                                {{ form.apps_sw.label_tag }}
-                                {{ form.apps_sw }}
-                            </div>
-                        </div>
-
-                        <!-- Problem Description Section -->
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                {{ form.report_desc.label_tag }}
-                                {{ form.report_desc }}
-                            </div>
-                        </div>
+                        <!-- Additional fields... -->
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </main>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hide both hw_type and apps_sw by default
-            const hwTypeSection = document.getElementById('hw_type_section');
-            const appsSwSection = document.getElementById('apps_sw_section');
-
-            hwTypeSection.style.display = 'none';
-            appsSwSection.style.display = 'none';
-
-            // Function to toggle visibility of hw_type and apps_sw based on report_type selection
-            function toggleFields() {
-                const reportType = document.getElementById('id_report_type').value;
-
-                if (reportType === 'hw') {
-                    hwTypeSection.style.display = 'block';  // Show Hardware section
-                    appsSwSection.style.display = 'none';   // Hide Software section
-                } else if (reportType === 'sw') {
-                    hwTypeSection.style.display = 'none';   // Hide Hardware section
-                    appsSwSection.style.display = 'block';  // Show Software section
-                } else {
-                    hwTypeSection.style.display = 'none';   // Hide Hardware section
-                    appsSwSection.style.display = 'none';   // Hide Software section
-                }
-            }
-
-            // Run the function on page load and when report_type changes
-            document.getElementById('id_report_type').addEventListener('change', toggleFields);
-            toggleFields();  // Call on page load in case report_type is pre-selected
-        });
-    </script>
 </body>
 </html>

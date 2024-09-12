@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai-Help Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            background: none;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .update-button {
+            margin-top: 5px;
+            margin-left: 15px;
+        }
+        .user-admin-update {
+            color: red;
+        }
+        .section-border {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .row-gap {
+            margin-right: 15px;
+        }
+        .table-title{
+            text-align: center;
+            font-size: x-large;
+        }
+        .info-title{
+            font-size: x-large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left side navigation -->
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#user-info">Maklumat Pegawai</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'chatbot_view' %}">Cipta Laporan Baharu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'landing_page' %}">Laman Utama Sistem</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/logout/" method="post" class="form-inline">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link nav-link">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main content area -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h1>Ai-Help Dashboard</h1>
+
+                <!-- User Information Section -->
+                <div class="table-responsive">
+                    <section id="user-info" class="section-border">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" colspan="2" class="table-title">Maklumat Pegawai</th>
+                                        <th scope="col" colspan="2" class="table-title">Maklumat Perkakasan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>Nama Pegawai</th>
+                                        <td>{{ form.user_name }}</td>
+                                        <th>Persekitaran</th>
+                                        <td>{{ form.env }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Emel</th>
+                                        <td>{{ form.email }}</td>
+                                        <th>Nama PC</th>
+                                        <td>{{ form.pc_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bahagian/Unit</th>
+                                        <td>{{ form.dprt }}</td>
+                                        <th>IP PC</th>
+                                        <td>{{ form.pc_ip }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Jawatan</th>
+                                        <td>{{ form.post }}</td>
+                                        <th>Serial No Perkakasan</th>
+                                        <td>{{ form.hw_sn }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Hardware Information Section (Visible to Admin and Tech Support) -->
+                    {% if is_admin_or_tech %}
+                    <section id="hardware-info" class="section-border">
+                        <div class="info-title">Jenis Laporan</div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Jenis Perkakasan</th>
+                                        <td>{{ form.hw_type }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Singkatan Jenis Perkakasan</th>
+                                        <td>{{ form.hw_type_encode }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Model Perkakasan</th>
+                                        <td>{{ form.hw_model }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Aplikasi/Perisian</th>
+                                        <td>{{ form.apps_sw }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    {% endif %}
+
+                    <!-- Report Information Section (Visible to All) -->
+                    <section id="report-information" class="section-border">
+                        <div class="info-title">Maklumat Laporan</div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No Tiket Laporan</th>
+                                        <th>Diskripsi Laporan</th>
+                                        <th>Tindakan Diambil</th>
+                                        <th>Status Tindakan</th>
+                                        <th>Tarikh Cipta Laporan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for ticket in tickets %}
+                                    <tr>
+                                        <td>{{ ticket.ticket_no }}</td>
+                                        <td>{{ ticket.report_desc }}</td>
+                                        <td>{{ ticket.act_taken }}</td>
+                                        <td>{{ ticket.act_stat }}</td>
+                                        <td>{{ ticket.date_created }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Report Action Taken Section (Visible to Admin and Tech Support) -->
+                    {% if is_admin_or_tech %}
+                    <section id="report-action-taken" class="section-border">
+                        <div class="info-title">Laporan Tindakan Diambil</div>
+                        <div class="alert alert-info">User can only see once tech support/admin take action</div>
+                    </section>
+                    {% endif %}
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

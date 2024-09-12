@@ -1,0 +1,502 @@
+report_type,hw_type,apps_sw,report_desc,act_taken
+HW,Komputer,Sistem Queuebee,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Sistem MyASUJM,komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Sistem Pemantauan Penghantaran Cabutan,printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,Sistem CMS (Menteri),"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,Sistem eSUSUN,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Sistem Infoblast,terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,Sistem SUMONE,sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Sistem Institusi Repositori Digital*,sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,Sistem Enkripsi BKPP(eBKPP)-MJM,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,MyGovUC,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Sistem SKD (MBKM & KSUKP),password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,Sistem Hari Kelepasan Am*,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Sistem Pelantikan 2.0,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Sistem Pemantauan Penghantaran Dokumen 2.0,printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Laman Web Rasmi BKPP,network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Maklumat Laman Web(CMS),tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Pengurusan Fail 2.0,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,SPR,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,Modul TAC Keselamatan harian,Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Modul Permohonan Cuti,emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,Modul Pergerakan Pegawai,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,Sistem HRMIS,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Sistem Targit-HRMIS,apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,Sistem ePerolehan,aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,SPA,Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,Sistem Integrasi BKPP (iBKPP),TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,bkpp,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Sistem Maklumbalas (LamanWeb),pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Sistem eParlimen (PMO),HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Sistem Unit Perlembagaan 1.0,printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,Lain-lain,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,Sistem Queuebee,emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,Sistem MyASUJM,sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,Sistem Pemantauan Penghantaran Cabutan,tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,Sistem CMS (Menteri),Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem eSUSUN,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Sistem Infoblast,network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem SUMONE,internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,Sistem Institusi Repositori Digital*,CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,Sistem Enkripsi BKPP(eBKPP)-MJM,Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,MyGovUC,sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,Sistem SKD (MBKM & KSUKP),emel tidak dapat di akses,reset password emel
+SW,Windows,Sistem Hari Kelepasan Am*,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,Sistem Pelantikan 2.0,bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,Sistem Pemantauan Penghantaran Dokumen 2.0,kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Laman Web Rasmi BKPP,enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,Maklumat Laman Web(CMS),tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem Pengurusan Fail 2.0,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,SPR,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Modul TAC Keselamatan harian,komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Modul Permohonan Cuti,printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,Modul Pergerakan Pegawai,"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,Sistem HRMIS,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Sistem Targit-HRMIS,terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,Sistem ePerolehan,sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,SPA,sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,Sistem Integrasi BKPP (iBKPP),sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,bkpp,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Sistem Maklumbalas (LamanWeb),printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,Sistem eParlimen (PMO),file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Sistem Unit Perlembagaan 1.0,password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Sistem Queuebee,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Sistem MyASUJM,printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Sistem Pemantauan Penghantaran Cabutan,network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Sistem CMS (Menteri),tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem eSUSUN,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Sistem Infoblast,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,Sistem SUMONE,Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Sistem Institusi Repositori Digital*,emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,Sistem Enkripsi BKPP(eBKPP)-MJM,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,MyGovUC,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,Sistem SKD (MBKM & KSUKP),Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,Sistem Hari Kelepasan Am*,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,Sistem Pelantikan 2.0,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Sistem Pemantauan Penghantaran Dokumen 2.0,pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Laman Web Rasmi BKPP,HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Maklumat Laman Web(CMS),printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,Sistem Pengurusan Fail 2.0,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,SPR,emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,Modul TAC Keselamatan harian,sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,Modul Permohonan Cuti,tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,Modul Pergerakan Pegawai,Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem HRMIS,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Sistem Targit-HRMIS,network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem ePerolehan,internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,SPA,CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,Sistem Integrasi BKPP (iBKPP),Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,bkpp,sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,Sistem Maklumbalas (LamanWeb),perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,Sistem eParlimen (PMO),sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,Sistem Unit Perlembagaan 1.0,emel tidak dapat di akses,reset password emel
+SW,Windows,,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,Sistem Queuebee,bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,Sistem MyASUJM,kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem Pemantauan Penghantaran Cabutan,enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,Sistem CMS (Menteri),tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem eSUSUN,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Infoblast,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Sistem SUMONE,komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Sistem Institusi Repositori Digital*,printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,Sistem Enkripsi BKPP(eBKPP)-MJM,"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,MyGovUC,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Sistem SKD (MBKM & KSUKP),sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,Sistem Hari Kelepasan Am*,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,Sistem Pelantikan 2.0,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Sistem Pemantauan Penghantaran Dokumen 2.0,printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,Laman Web Rasmi BKPP,file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Maklumat Laman Web(CMS),password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,Sistem Pengurusan Fail 2.0,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,SPR,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Modul TAC Keselamatan harian,printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Modul Permohonan Cuti,network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Modul Pergerakan Pegawai,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem HRMIS,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Sistem Targit-HRMIS,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,Sistem ePerolehan,Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,SPA,emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,Sistem Integrasi BKPP (iBKPP),CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,bkpp,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Sistem Maklumbalas (LamanWeb),apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,Sistem eParlimen (PMO),aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,Sistem Unit Perlembagaan 1.0,Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,Sistem Queuebee,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Sistem MyASUJM,pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Sistem Pemantauan Penghantaran Cabutan,HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Sistem CMS (Menteri),printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,Sistem eSUSUN,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,Sistem Infoblast,emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,Sistem SUMONE,sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,Sistem Institusi Repositori Digital*,tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,Sistem Enkripsi BKPP(eBKPP)-MJM,Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,MyGovUC,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,Sistem SKD (MBKM & KSUKP),CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,Sistem Hari Kelepasan Am*,Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,Sistem Pelantikan 2.0,sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,Sistem Pemantauan Penghantaran Dokumen 2.0,perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,Laman Web Rasmi BKPP,sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,Maklumat Laman Web(CMS),emel tidak dapat di akses,reset password emel
+SW,Windows,Sistem Pengurusan Fail 2.0,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,SPR,bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,Modul TAC Keselamatan harian,kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Modul Permohonan Cuti,enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,Modul Pergerakan Pegawai,tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem HRMIS,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Targit-HRMIS,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Sistem ePerolehan,komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,SPA,printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,Sistem Integrasi BKPP (iBKPP),"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,bkpp,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Sistem Maklumbalas (LamanWeb),terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,Sistem eParlimen (PMO),sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Sistem Unit Perlembagaan 1.0,sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,Sistem Queuebee,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Sistem MyASUJM,printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,Sistem Pemantauan Penghantaran Cabutan,file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Sistem CMS (Menteri),password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,Sistem eSUSUN,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Sistem Infoblast,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Sistem SUMONE,printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Sistem Institusi Repositori Digital*,network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Sistem Enkripsi BKPP(eBKPP)-MJM,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,MyGovUC,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Sistem SKD (MBKM & KSUKP),emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,Sistem Hari Kelepasan Am*,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,Sistem Pelantikan 2.0,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Sistem Pemantauan Penghantaran Dokumen 2.0,apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,Laman Web Rasmi BKPP,aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,Maklumat Laman Web(CMS),Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,Sistem Pengurusan Fail 2.0,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,SPR,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Modul TAC Keselamatan harian,pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Modul Permohonan Cuti,HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Modul Pergerakan Pegawai,printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,Sistem HRMIS,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,Sistem Targit-HRMIS,emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,Sistem ePerolehan,sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,SPA,tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,Sistem Integrasi BKPP (iBKPP),Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,bkpp,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Sistem Maklumbalas (LamanWeb),network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem eParlimen (PMO),internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,Sistem Unit Perlembagaan 1.0,CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,,Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,Sistem Queuebee,sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,Sistem MyASUJM,perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,Sistem Pemantauan Penghantaran Cabutan,sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,Sistem CMS (Menteri),emel tidak dapat di akses,reset password emel
+SW,Windows,Sistem eSUSUN,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,Sistem Infoblast,bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,Sistem SUMONE,kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem Institusi Repositori Digital*,enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,Sistem Enkripsi BKPP(eBKPP)-MJM,tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,MyGovUC,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Sistem SKD (MBKM & KSUKP),printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,Sistem Hari Kelepasan Am*,"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,Sistem Pelantikan 2.0,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Sistem Pemantauan Penghantaran Dokumen 2.0,terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,Laman Web Rasmi BKPP,sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Maklumat Laman Web(CMS),sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,Sistem Pengurusan Fail 2.0,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,SPR,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Modul TAC Keselamatan harian,printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,Modul Permohonan Cuti,file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Modul Pergerakan Pegawai,password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,Sistem HRMIS,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Sistem Targit-HRMIS,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Sistem ePerolehan,printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,SPA,network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Sistem Integrasi BKPP (iBKPP),tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,bkpp,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Sistem Maklumbalas (LamanWeb),tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,Sistem eParlimen (PMO),Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Sistem Unit Perlembagaan 1.0,emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,Sistem Queuebee,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Sistem MyASUJM,apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,Sistem Pemantauan Penghantaran Cabutan,aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,Sistem CMS (Menteri),Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,Sistem eSUSUN,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,Sistem Infoblast,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Sistem SUMONE,pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Sistem Institusi Repositori Digital*,HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Sistem Enkripsi BKPP(eBKPP)-MJM,printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,MyGovUC,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,Sistem SKD (MBKM & KSUKP),tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,Sistem Hari Kelepasan Am*,Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem Pelantikan 2.0,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Sistem Pemantauan Penghantaran Dokumen 2.0,network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Laman Web Rasmi BKPP,internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,Maklumat Laman Web(CMS),CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,Sistem Pengurusan Fail 2.0,Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,SPR,sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,Modul TAC Keselamatan harian,perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,Modul Permohonan Cuti,sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,Modul Pergerakan Pegawai,emel tidak dapat di akses,reset password emel
+SW,Windows,Sistem HRMIS,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,Sistem Targit-HRMIS,bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,Sistem ePerolehan,kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,SPA,enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,Sistem Integrasi BKPP (iBKPP),tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,bkpp,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Maklumbalas (LamanWeb),komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Sistem eParlimen (PMO),komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Sistem Unit Perlembagaan 1.0,printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,,"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,Sistem Queuebee,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Sistem MyASUJM,terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,Sistem Pemantauan Penghantaran Cabutan,sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Sistem CMS (Menteri),sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,Sistem eSUSUN,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,Sistem Infoblast,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Sistem SUMONE,printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,Sistem Institusi Repositori Digital*,file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Sistem Enkripsi BKPP(eBKPP)-MJM,password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,MyGovUC,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Sistem SKD (MBKM & KSUKP),network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Sistem Hari Kelepasan Am*,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Pelantikan 2.0,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Sistem Pemantauan Penghantaran Dokumen 2.0,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,Laman Web Rasmi BKPP,Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Maklumat Laman Web(CMS),emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,Sistem Pengurusan Fail 2.0,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,SPR,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Modul TAC Keselamatan harian,apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,Modul Permohonan Cuti,aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,Modul Pergerakan Pegawai,Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,Sistem HRMIS,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,Sistem Targit-HRMIS,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Sistem ePerolehan,pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,SPA,HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Sistem Integrasi BKPP (iBKPP),printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,bkpp,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,Sistem Maklumbalas (LamanWeb),emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,Sistem eParlimen (PMO),sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,Sistem Unit Perlembagaan 1.0,tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,,Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem Queuebee,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Sistem MyASUJM,network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem Pemantauan Penghantaran Cabutan,internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,Sistem CMS (Menteri),CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,Sistem eSUSUN,Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,Sistem Infoblast,sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,Sistem SUMONE,perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,Sistem Institusi Repositori Digital*,sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,Sistem Enkripsi BKPP(eBKPP)-MJM,emel tidak dapat di akses,reset password emel
+SW,Windows,MyGovUC,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem SKD (MBKM & KSUKP),enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,Sistem Hari Kelepasan Am*,tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem Pelantikan 2.0,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Pemantauan Penghantaran Dokumen 2.0,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Laman Web Rasmi BKPP,komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Maklumat Laman Web(CMS),printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,Sistem Pengurusan Fail 2.0,"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,SPR,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Modul TAC Keselamatan harian,terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,Modul Permohonan Cuti,sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Modul Pergerakan Pegawai,sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,Sistem HRMIS,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,Sistem Targit-HRMIS,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Sistem ePerolehan,printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,SPA,file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Sistem Integrasi BKPP (iBKPP),password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,bkpp,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Sistem Maklumbalas (LamanWeb),versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Sistem eParlimen (PMO),printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Sistem Unit Perlembagaan 1.0,network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Queuebee,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Sistem MyASUJM,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,Sistem Pemantauan Penghantaran Cabutan,Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Sistem CMS (Menteri),emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,Sistem eSUSUN,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,Sistem Infoblast,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Sistem SUMONE,apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,Sistem Institusi Repositori Digital*,aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,Sistem Enkripsi BKPP(eBKPP)-MJM,Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,MyGovUC,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Sistem SKD (MBKM & KSUKP),HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Sistem Hari Kelepasan Am*,printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,Sistem Pelantikan 2.0,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,Sistem Pemantauan Penghantaran Dokumen 2.0,emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,Laman Web Rasmi BKPP,sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,Maklumat Laman Web(CMS),tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,Sistem Pengurusan Fail 2.0,Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,SPR,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Modul TAC Keselamatan harian,network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Modul Permohonan Cuti,internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,Modul Pergerakan Pegawai,CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,Sistem HRMIS,Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,Sistem Targit-HRMIS,sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,Sistem ePerolehan,perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,SPA,sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,Sistem Integrasi BKPP (iBKPP),emel tidak dapat di akses,reset password emel
+SW,Windows,bkpp,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,Sistem Maklumbalas (LamanWeb),bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,Sistem eParlimen (PMO),kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem Unit Perlembagaan 1.0,enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,,tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem Queuebee,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem MyASUJM,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Sistem Pemantauan Penghantaran Cabutan,komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Sistem CMS (Menteri),printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,Sistem eSUSUN,"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,Sistem Infoblast,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Sistem SUMONE,terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,Sistem Institusi Repositori Digital*,sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Sistem Enkripsi BKPP(eBKPP)-MJM,sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,MyGovUC,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,Sistem SKD (MBKM & KSUKP),file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Sistem Hari Kelepasan Am*,password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,Sistem Pelantikan 2.0,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Sistem Pemantauan Penghantaran Dokumen 2.0,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Laman Web Rasmi BKPP,printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Maklumat Laman Web(CMS),network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Sistem Pengurusan Fail 2.0,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,SPR,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Modul TAC Keselamatan harian,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,Modul Permohonan Cuti,Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Modul Pergerakan Pegawai,emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,Sistem HRMIS,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,Sistem Targit-HRMIS,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Sistem ePerolehan,apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,SPA,aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,Sistem Integrasi BKPP (iBKPP),Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,bkpp,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,Sistem Maklumbalas (LamanWeb),"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Sistem eParlimen (PMO),pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Sistem Unit Perlembagaan 1.0,HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,,printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,Sistem Queuebee,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,Sistem MyASUJM,emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,Sistem Pemantauan Penghantaran Cabutan,sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,Sistem CMS (Menteri),tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,Sistem eSUSUN,Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem Infoblast,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Sistem SUMONE,network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem Institusi Repositori Digital*,internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,Sistem Enkripsi BKPP(eBKPP)-MJM,CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,MyGovUC,Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,Sistem SKD (MBKM & KSUKP),sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,Sistem Hari Kelepasan Am*,emel tidak dapat di akses,reset password emel
+SW,Windows,Sistem Pelantikan 2.0,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,Sistem Pemantauan Penghantaran Dokumen 2.0,bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,Laman Web Rasmi BKPP,kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Maklumat Laman Web(CMS),enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,Sistem Pengurusan Fail 2.0,tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,SPR,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Modul TAC Keselamatan harian,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Modul Permohonan Cuti,komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Modul Pergerakan Pegawai,printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,Sistem HRMIS,"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,Sistem Targit-HRMIS,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,Sistem ePerolehan,terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,SPA,sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Sistem Integrasi BKPP (iBKPP),sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,bkpp,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,Sistem Maklumbalas (LamanWeb),sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Sistem eParlimen (PMO),printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,Sistem Unit Perlembagaan 1.0,file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,,password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,Sistem Queuebee,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Sistem MyASUJM,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Sistem Pemantauan Penghantaran Cabutan,printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Sistem CMS (Menteri),network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Sistem eSUSUN,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Infoblast,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Sistem SUMONE,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,Sistem Institusi Repositori Digital*,Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Sistem Enkripsi BKPP(eBKPP)-MJM,emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,MyGovUC,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,Sistem SKD (MBKM & KSUKP),aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,Sistem Hari Kelepasan Am*,Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,Sistem Pelantikan 2.0,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,Sistem Pemantauan Penghantaran Dokumen 2.0,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Laman Web Rasmi BKPP,pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Maklumat Laman Web(CMS),HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Sistem Pengurusan Fail 2.0,printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+HW,Laptop,SPR,lesen perisian anti-virus telah tamat tempoh,kemaskini lesen antivirus yang terkini
+SW,Emel,Modul TAC Keselamatan harian,emel di hantar tidak di terima dan dimaklumkan emel di sekat,maklumkan kepada pihak MyGovUC
+SW,Internet,Modul Permohonan Cuti,sistem tidak berfungsi dan tiada akses internet,ubah IP no kepada IP baharu
+HW,Tablet,Modul Pergerakan Pegawai,tablet tidak dapat dihidupkan,Tablet Apple telah diambil bagi dan upgrade versi kepada yang terkini dan kabel pengecas telah ditukarkan
+HW,Printer,Sistem HRMIS,Printer berbunyi dan berasap apabila buat cetakkan,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem Targit-HRMIS,"Sistem tidak dapat di akses, tiada sambungan network",periksa sambungan rangkaian dan ubah IP rangkaian yang baharu
+SW,Network,Sistem ePerolehan,network tidak dapat akses ke dalam sistem,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,SPA,internet tidak dapat diakses,reset semula IP bagi pengguna
+HW,Komputer,Sistem Integrasi BKPP (iBKPP),CPU berbunyi bising dan panas,buat penyelenggaraan dan cuci motherboard dan kipas processor
+HW,Komputer,bkpp,Direktori laman web pegawai tidak betul,membuat pembetulan sebagaimana yang dimaklumkan
+SW,Network,Sistem Maklumbalas (LamanWeb),sistem tidak dapat diakses dan rangkaian tidak disambungkan,"buat pemeriksaan pada network switch, plug in semula kabel"
+HW,Printer,Sistem eParlimen (PMO),perisian printer tidak dikemaskini,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Sharing Folder,Sistem Unit Perlembagaan 1.0,sharing folder tidak dapat diakses,periksa permission bagi folder terlibat dan berikan kebenaran utk akses
+SW,Emel,,emel tidak dapat di akses,reset password emel
+SW,Windows,Sistem Queuebee,windows loading lama kemudian restart,tukar PC simpanan dan buat reinstallation windows dan update
+HW,Laptop,Sistem MyASUJM,bateri laptop panas dan tempoh penggunaan sangat singkat,tukar laptop bermasalah dengan laptop sementara
+HW,Printer,Sistem Pemantauan Penghantaran Cabutan,kertas cetakkan kotor dan kekadang kertas sangkut,tukar kepada printer sementara dan printer bermasalah telah di ambil utk pemeriksaan selanjutnya
+SW,Network,Sistem CMS (Menteri),enkripsi tidak dapat dijana,generate semula modul enkripsi
+SW,Internet,Sistem eSUSUN,tiada internet,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+SW,Internet,Sistem Infoblast,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem SUMONE,komputer tiada respon,pemeriksaan telah dibuat dan di dapati kabel kuasa tidak di pasang dengan kemas
+HW,Komputer,Sistem Institusi Repositori Digital*,komputer kipas berbunyi kuat dan panas,buat penyelengaraan ke atas komputer
+HW,Printer,Sistem Enkripsi BKPP(eBKPP)-MJM,printer sistem Queuebee di berfungsi,buat pertukaran printer yang rosak
+HW,Komputer,MyGovUC,"Lampu pada CPU tidak berkelip, kipas berbunyi",ambil dan buat pengujian perkakasan terlibat dan didapati ada kerosakan pada hard disk
+HW,Komputer,Sistem Enkripsi BKPP(eBKPP)-MBKM_KSUKP,sistem pengoperasian tidak berfungsi,membuat pemasangan semula sistem pengoperasian dan update patches yang terkini
+HW,Printer,"Sistem CMS (MBKM, KSUKP, JKPPN, KJP,KEBBP)",terdapat line pada dokumen setelah print,tukar drum toner baharu dan buat cleaning drum image
+SW,Network,Sistem SKD (MBKM & KSUKP),sistem tidak beroperasi apabila klik modul no file,reset semula password bagi akses sistem
+SW,Network,Sistem Hari Kelepasan Am*,sistem tidak dapat diakses dan rangkaian tidak dapat dicapai,"semak sambungan kabel rangkaian dan switch, didapati tidak on"
+SW,Internet,Sistem Pelantikan 2.0,sistem tidak dapat diakses dan tiada lampu connectivity pada network card,semak rangkaian dan buat pertukaran network card baharu
+SW,Network,Sistem Pemantauan Penghantaran Dokumen 2.0,sistem tidak dapat akses siri nombor dalam senarai direktori,semakan ke atas sistem bagi mengetahui masalah dan di dapati terdapat bug pada fungsi akses no siri
+HW,Printer,Laman Web Rasmi BKPP,printer tidak berfungsi,tukar printer yang rosak dengan printer sementara
+SW,Sharing Folder,Maklumat Laman Web(CMS),file yang diterima tidak dapat decrypt,uninstall dan install semula engine enkripsi
+SW,Emel,Sistem Pengurusan Fail 2.0,password emel terlupa,maklumkan kepada pihak MyGovUC
+SW,Windows,SPR,versi windows tidak menyokong aplikasi enkripsi,uninstall dan install semula engine enkripsi kepada versi lain
+SW,Microsoft Office,Modul TAC Keselamatan harian,versi microsoft office tidak respond bagi dokumen yang di muat turun,uninstall microsoft office versi 2010 dan install microsoft office versi 2021
+HW,Printer,Modul Permohonan Cuti,printer tidak berfungsi,punca kuasa pinter tidak dipasang dengan betul
+SW,Network,Modul Pergerakan Pegawai,network tidak dapat akses ke dalam sistem,kabel network tidak di pasang dengan betul dan tukar connector RJ45 yang baru
+SW,Network,Sistem HRMIS,tiada sambungan rangkaian,"periksa kabel rangkaian dan periksa connectivity di switch dan plug in semula kabel rangkaian, network beroperasi semua"
+HW,Komputer,Sistem Targit-HRMIS,sistem tidak dapat diakses,reset semula katalaluan sistem
+SW,Internet,Sistem ePerolehan,tiada internet dan MyGovUC tidak dapat di akses,sistem rangkaian internet down di pihak GITN dan maklumkan kepada pihak GITN
+SW,Internet,SPA,Direktori laman web pegawai tidak dikemaskini,telah mengemaskini direktori dan maklumkan kepada pentadbir laman web
+SW,Emel,Sistem Integrasi BKPP (iBKPP),emel MyGovUc tidak dapat diakses,maklumkan kepada pihak pentadbir sistem MyGovUC MAMPU
+SW,Windows,bkpp,CMS bagi laman web tidak berfungsi,"pemeriksaan bagi CMS,perbaiki  serta mengemaskini Bug yang terdapat di dalam sistem"
+HW,Laptop,Sistem Maklumbalas (LamanWeb),"laptop tidak beroperasi, apabila on tiada apa yang berlaku hanya lampu di butang on berkelip-kelip","laptop bermasalah telah diambil, pertukaran laptop sementara telah diserahkan bagi menggantikan laptop yang bermasalah"
+SW,Microsoft Office,Sistem eParlimen (PMO),apliksai microsoft office tidak dapat dijana apabila butang download ditekan,periksa modul yang terlibat
+SW,Internet,Sistem Unit Perlembagaan 1.0,aplikasi tidak dapat diakses tiada internet,periksa sistem rangkaian dan didapati NIC rosak
+HW,Tablet,,Apple ID tidak dapat diakses,reset semula ID 
+HW,Komputer,Sistem Queuebee,TAC tidak dapat di genarate untuk punch out,Semakan ke atas sistem dan di dapati maklumat no kad pengenalan salah
+HW,Komputer,Sistem MyASUJM,"permohonan cuti tidak dapat dibuat, nama ketua tiada dalam senarai untuk dipilih",maklumkan kepada pihak sumber manusia bagi menambah nama dan peranan
+HW,Komputer,Sistem Pemantauan Penghantaran Cabutan,pc tak respond dan tiada paparan,"buat pemeriksaan pada punca kuasa, di dapati motherboard tidak berfungsi"
+HW,Laptop,Sistem CMS (Menteri),HRMIS tidak dapat di akses,mohon utk pengguna maklumkan kepada pihak Sumber Manusia utk reset kata laluan
+HW,Printer,Sistem eSUSUN,printer tidak berfungsi,perisian printer telah dibuat pemasangan semula dan dikemaskini
+SW,Lain-lain,Lain-lain,Tidak berkenaan,Tidak berkenaan

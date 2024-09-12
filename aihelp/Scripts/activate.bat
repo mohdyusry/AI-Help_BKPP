@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< Updated upstream
 set VIRTUAL_ENV=D:\System_Prototype\BKPP_AI-Help\AI-Help_BKPP\AI-Help_BKPP\aihelp
+=======
+set VIRTUAL_ENV=D:\Proposed Project For ACE\backup AHBKPP\env2
+>>>>>>> Stashed changes
 
 if not defined PROMPT set PROMPT=$P$G
 
@@ -16,7 +20,11 @@ if defined _OLD_VIRTUAL_PROMPT set PROMPT=%_OLD_VIRTUAL_PROMPT%
 if defined _OLD_VIRTUAL_PYTHONHOME set PYTHONHOME=%_OLD_VIRTUAL_PYTHONHOME%
 
 set _OLD_VIRTUAL_PROMPT=%PROMPT%
+<<<<<<< Updated upstream
 set PROMPT=(aihelp) %PROMPT%
+=======
+set PROMPT=(env2) %PROMPT%
+>>>>>>> Stashed changes
 
 if defined PYTHONHOME set _OLD_VIRTUAL_PYTHONHOME=%PYTHONHOME%
 set PYTHONHOME=
@@ -25,7 +33,11 @@ if defined _OLD_VIRTUAL_PATH set PATH=%_OLD_VIRTUAL_PATH%
 if not defined _OLD_VIRTUAL_PATH set _OLD_VIRTUAL_PATH=%PATH%
 
 set PATH=%VIRTUAL_ENV%\Scripts;%PATH%
+<<<<<<< Updated upstream
 set VIRTUAL_ENV_PROMPT=(aihelp) 
+=======
+set VIRTUAL_ENV_PROMPT=(env2) 
+>>>>>>> Stashed changes
 
 :END
 if defined _OLD_CODEPAGE (

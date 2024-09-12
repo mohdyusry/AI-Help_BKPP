@@ -2,61 +2,157 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chatbot Response</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respon Chatbot</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container-fluid {
+            margin-top: 40px;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+        }
+        .sidebar a, .sidebar button {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background-color: #007bff;
+            border: none;
+            text-align: center;
+            width: 100%;
+        }
+        .sidebar a:hover, .sidebar button:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+        .form-container {
+            margin-left: 220px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .chatgpt-section {
+            margin-top: 40px;
+        }
+        .btn-left-align {
+            display: block;
+            text-align: left;
+        }
+        .chatbase-iframe {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Chatbot Response</h2>
-    <p><strong>Recommended Action:</strong> {{ action }}</p>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav class="col-md-2 sidebar">
+                {% if user.is_admin %}
+                    <a href="{% url 'admin_dashboard' %}">Laman Pentadbir</a>
+                {% elif user.is_technician %}
+                    <a href="{% url 'technician_dashboard' %}">Laman Pasukan Teknikal</a>
+                {% elif user.is_user %}
+                    <a href="{% url 'user_dashboard' %}">Laman Pengguna</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_tickets' %}">Semak Sejarah Laporan</a>
+                </li>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </nav>
 
-    <form method="post">
-        {% csrf_token %}
-        <input type="hidden" name="hw_type" value="{{ hw_type }}">
-        <input type="hidden" name="apps_sw" value="{{ apps_sw }}">
-        <input type="hidden" name="report_type" value="{{ report_type }}">
-        <input type="hidden" name="report_desc" value="{{ report_desc }}">
-        <input type="hidden" name="pc_ip" value="{{ pc_ip }}">
-        <input type="hidden" name="action" value="{{ action }}">
+            <!-- Main Content -->
+            <main class="col-md-10 ms-sm-auto form-container">
+                <h2 class="mb-4 text-center">Respon Dari Chatbot</h2>
 
-        <label for="resolved">Did this solve your issue?</label><br>
-        <input type="radio" name="resolved" value="yes" id="yes"> Yes<br>
-        <input type="radio" name="resolved" value="no" id="no"> No<br>
+                <!-- Displaying the recommended action -->
+                <p><strong>Cadangan Solusi:</strong> {{ action }}</p>
 
-        <button type="submit" name="submit_feedback">Submit Feedback</button>
-    </form>
+                <!-- Form for user feedback (resolved or not resolved) -->
+                <form method="post" class="btn-left-align">
+                    {% csrf_token %}
+                    <input type="hidden" name="hw_type" value="{{ hw_type }}">
+                    <input type="hidden" name="apps_sw" value="{{ apps_sw }}">
+                    <input type="hidden" name="report_type" value="{{ report_type }}">
+                    <input type="hidden" name="report_desc" value="{{ report_desc }}">
+                    <input type="hidden" name="pc_ip" value="{{ pc_ip }}">
+                    <input type="hidden" name="action" value="{{ action }}">
 
-    <p><strong>Is this solved your issue? Click "No" to take it for a technician or click the button below to get another suggestion from ChatGPT:</strong></p>
+                    <label for="resolved">Adakah masalah anda selesai?</label><br>
+                    <input type="radio" name="resolved" value="yes" id="yes">Ya <br>
+                    <input type="radio" name="resolved" value="no" id="no"> Tidak <br>
 
-    <!-- Form to generate a new recommendation using ChatGPT -->
-    <form method="post">
-        {% csrf_token %}
-        <input type="hidden" name="hw_type" value="{{ hw_type }}">
-        <input type="hidden" name="apps_sw" value="{{ apps_sw }}">
-        <input type="hidden" name="report_type" value="{{ report_type }}">
-        <input type="hidden" name="report_desc" value="{{ report_desc }}">
-        <input type="hidden" name="pc_ip" value="{{ pc_ip }}">
-        <button type="submit" name="generate_new_action">Generate New Action</button>
-    </form>
+                    <button type="submit" name="submit_feedback" class="btn btn-primary mt-3">Hantar Maklum Balas</button>
+                </form>
 
-    {% if chatgpt_response %}
-    <div>
-        <h3>ChatGPT Recommendation</h3>
-        <textarea rows="4" cols="50" readonly>{{ chatgpt_response }}</textarea>
+                <p class="mt-4"><strong>Sekiranya isu tidak selesai? Klik "Tidak" untuk bantuan teknikal atau klik butang dibawah bagi mendapatkan bantuan dari ChatGPT:</strong></p>
+
+                <!-- Button to toggle ChatGPT iframe -->
+                <form method="post" class="btn-left-align">
+                    {% csrf_token %}
+                    <input type="hidden" name="hw_type" value="{{ hw_type }}">
+                    <input type="hidden" name="apps_sw" value="{{ apps_sw }}">
+                    <input type="hidden" name="report_type" value="{{ report_type }}">
+                    <input type="hidden" name="report_desc" value="{{ report_desc }}">
+                    <input type="hidden" name="pc_ip" value="{{ pc_ip }}">
+                    <button type="button" class="btn btn-warning mt-3" onclick="toggleIframe()">Jana Bantuan Teknikal ChatGPT</button>
+                </form>
+
+                <!-- ChatGPT iframe section, initially hidden -->
+                <div class="chatbase-iframe" id="chatbase-iframe">
+                    <iframe
+                        src="https://www.chatbase.co/chatbot-iframe/NOySOOfsaDm7NlexGmChm"
+                        width="100%"
+                        style="height: 100%; min-height: 700px;"
+                        frameborder="0"
+                    ></iframe>
+                </div>
+
+                <!-- ChatGPT Response Section -->
+                {% if chatgpt_response %}
+                <div class="chatgpt-section">
+                    <h3 class="text-center">Cadangan Dari ChatGPT</h3>
+                    <textarea rows="4" class="form-control" readonly>{{ chatgpt_response }}</textarea>
+                </div>
+                {% endif %}
+            </main>
+        </div>
     </div>
-    {% endif %}
 
-    <nav>
-        <!-- Link to the appropriate dashboard based on user role -->
-        {% if user.is_admin %}
-            <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
-        {% elif user.is_technician %}
-            <a href="{% url 'technician_dashboard' %}">Technician Dashboard</a>
-        {% elif user.is_user %}
-            <a href="{% url 'user_dashboard' %}">User Dashboard</a>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
+    <!-- JavaScript to Toggle the iframe -->
+    <script>
+        function toggleIframe() {
+            const iframeSection = document.getElementById('chatbase-iframe');
+            iframeSection.style.display = (iframeSection.style.display === 'none' || iframeSection.style.display === '') 
+                                          ? 'block' : 'none';  // Toggle iframe visibility
+        }
+    </script>
 
-        <a href="{% url 'logout' %}">Logout</a>
-    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

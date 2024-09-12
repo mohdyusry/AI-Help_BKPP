@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiket Tutup</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -29,6 +30,7 @@
     <div class="container">
         <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center">
+
             <h2>Maklumat Tiket Laporan Ditutup</h2>
             <nav>
                 <a href="{% url 'open_tickets' %}" class="btn btn-info">Papar Tiket Terbuka</a>
@@ -36,6 +38,7 @@
                 <form action="{% url 'logout' %}" method="post" style="display:inline;">
                     {% csrf_token %}
                     <button type="submit"class="btn btn-danger">Keluar</button>
+
                 </form>
             </nav>
         </div>
@@ -46,13 +49,13 @@
             <table class="table table-hover table-bordered">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Ticket No</th>
-                        <th>User Name</th>
-                        <th>Report Type</th>
-                        <th>Report Description</th>
-                        <th>Date Created</th>
-                        <th>Action Taken</th>
-                        <th>Taken By</th>
+                        <th>No Tiket</th>
+                        <th>Nama Pegawai</th>
+                        <th>Jenis Laporan</th>
+                        <th>Deskripsi Laporan</th>
+                        <th>Tarikh Cipta Laporan</th>
+                        <th>Tindakan Diambil</th>
+                        <th>Tindakan Oleh</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,3 +1,4 @@
+
 '''import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
@@ -151,14 +152,30 @@ def train_model(df):
     """
     Train a machine learning model using the preprocessed data.
     """
-    X_train, X_test, y_train, y_test = train_test_split(df['combined'], df['act_taken'], test_size=0.2, random_state=42)
+    # Handle missing values in 'combined' and 'act_taken' columns
+    df = df[['combined', 'act_taken']].dropna(subset=['combined', 'act_taken'])
 
-    # Create and train a model pipeline
-    model = make_pipeline(TfidfVectorizer(), RandomForestClassifier())
+    # Split the data into training and test sets
+    X_train, X_test, y_train, y_test = train_test_split(
+        df['combined'], df['act_taken'], test_size=0.2, random_state=42
+    )
+
+    # Handle any missing or invalid values in y_train (target variable)
+    if y_train.isnull().any():
+        raise ValueError("Target variable contains null values after splitting.")
+
+    # Ensure that the target variable doesn't have invalid types (like None)
+    y_train = y_train.fillna("Unknown")  # Or another sensible default value
+    y_test = y_test.fillna("Unknown")
+
+    # Create and train a model pipeline with TF-IDF and RandomForestClassifier
+    model = make_pipeline(TfidfVectorizer(), RandomForestClassifier(random_state=42))
     model.fit(X_train, y_train)
 
-    # Evaluate the model
+    # Make predictions on the test set
     y_pred = model.predict(X_test)
+
+    # Evaluate the model
     print("Model Training Report:")
     print(classification_report(y_test, y_pred))
 

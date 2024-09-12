@@ -27,24 +27,33 @@ def landing_page(request):
 # Chatbot View
 @login_required
 def chatbot_view(request):
-    form = ChatbotForm()
-    action = None  # To hold the recommended action
-    chatgpt_response = None  # To hold the ChatGPT response
+    # Initialize the form with the logged-in user
+    form = ChatbotForm(user=request.user)
+    action = None  # Placeholder for recommended action
+    chatgpt_response = None  # Placeholder for ChatGPT response
 
     if request.method == 'POST':
-        if 'action' in request.POST:
-            # User is responding to chatbot recommendation
-            resolved = request.POST.get('resolved', None)
-            hw_type = request.POST.get('hw_type')
-            apps_sw = request.POST.get('apps_sw')
-            report_type = request.POST.get('report_type')
-            report_desc = request.POST.get('report_desc')
-            pc_ip = request.POST.get('pc_ip')
-            action = request.POST.get('action')
+        # Handle form re-submission with POST data
+        form = ChatbotForm(request.POST, user=request.user)
 
-            if resolved:
+        if form.is_valid():
+            # Extract cleaned form data
+            hw_type = form.cleaned_data['hw_type']
+            apps_sw = form.cleaned_data['apps_sw']
+            report_type = form.cleaned_data['report_type']
+            report_desc = form.cleaned_data['report_desc']
+            pc_ip = form.cleaned_data['pc_ip']
+            dprt = form.cleaned_data['dprt']
+            post = form.cleaned_data['post']
+            env = form.cleaned_data['env']
+            action = form.cleaned_data.get('action', None)  # Handle empty action case
+
+            if 'resolved' in request.POST:
+                # User is responding to chatbot recommendation (feedback form)
+                resolved = request.POST.get('resolved')
                 act_stat = 'S' if resolved == 'yes' else 'O'
-                # Save the Ticket model with the user's response
+
+                # Save feedback to the Ticket model
                 Ticket.objects.create(
                     hw_type=hw_type,
                     apps_sw=apps_sw,
@@ -55,55 +64,44 @@ def chatbot_view(request):
                     act_stat=act_stat,
                     user_name=request.user.username,
                     email=request.user.email,
+                    dprt=dprt,
+                    post=post,
+                    env=env,
                     taken_by='chatbot'
                 )
 
-                # Update model with new data
+                # Update model with new data if necessary
                 update_model_with_new_data(hw_type, apps_sw, report_type, report_desc, action)
 
-            return redirect('chatbot_view')
+                return redirect('user_tickets.html')  # Redirect to the chatbot view after saving
 
-        elif 'generate_new_action' in request.POST:
-            # Handle the "Generate New Action" button click
-            report_desc = request.POST.get('report_desc')
-            hw_type = request.POST.get('hw_type')
-            apps_sw = request.POST.get('apps_sw')
-            report_type = request.POST.get('report_type')
-            pc_ip = request.POST.get('pc_ip')
-
-            # Get a new recommendation from ChatGPT based on report_desc
-            chatgpt_response = get_chatgpt_recommendation(hw_type, apps_sw, report_type, report_desc)
-
-            # Render the same page with the new action
-            return render(request, 'chatbot_response.html', {
-                'hw_type': hw_type,
-                'apps_sw': apps_sw,
-                'pc_ip': pc_ip,
-                'report_type': report_type,
-                'report_desc': report_desc,
-                'action': action,
-                'form': form,
-                'chatgpt_response': chatgpt_response,  # Pass the ChatGPT response to the template
-            })
-
-        else:
-            # Handle initial form submission
-            form = ChatbotForm(request.POST)
-            if form.is_valid():
-                hw_type = form.cleaned_data['hw_type']
-                apps_sw = form.cleaned_data['apps_sw']
-                pc_ip = form.cleaned_data['pc_ip']
-                report_type = form.cleaned_data['report_type']
-                report_desc = form.cleaned_data['report_desc']
-
-                # Step 1: Get recommendation from your model
+            else:
+                # Handle initial form submission
+                # Step 1: Try to get a recommendation from your internal model
                 action = recommend_action(hw_type, apps_sw, report_type, report_desc)
-
-                # Step 2: Fallback to ChatGPT if no recommendation from your model
+                resolved = request.POST.get('resolved')
+                act_stat = 'S' if resolved == 'yes' else 'O'
+            
+                # Step 2: Fallback to ChatGPT if no recommendation is found
                 if not action:
                     action = get_chatgpt_recommendation(hw_type, apps_sw, report_type, report_desc)
-
-                # Render the response page with the action (from model or ChatGPT)
+                # Save feedback to the Ticket model
+                Ticket.objects.create(
+                    hw_type=hw_type,
+                    apps_sw=apps_sw,
+                    report_type=report_type,
+                    report_desc=report_desc,
+                    pc_ip=pc_ip,
+                    act_taken=action,
+                    act_stat=act_stat,  
+                    user_name=request.user.username,
+                    email=request.user.email,
+                    dprt=dprt,
+                    post=post,
+                    env=env,    
+                    taken_by='chatbot'
+                )
+                # Render the response page with the recommended action
                 return render(request, 'chatbot_response.html', {
                     'hw_type': hw_type,
                     'apps_sw': apps_sw,
@@ -113,8 +111,11 @@ def chatbot_view(request):
                     'action': action,
                     'form': form,
                 })
+                return redirect('user_tickets.html')
 
+    # Render the form initially or if invalid
     return render(request, 'chatbot_form.html', {'form': form})
+
 
 def get_chatgpt_recommendation(hw_type, apps_sw, report_type, report_desc):
     try:
@@ -187,8 +188,42 @@ def logout_view(request):
 @login_required
 def admin_dashboard(request):
     if request.user.is_admin:
+        # Get the filters from the GET parameters
+        report_type = request.GET.get('report_type', '')
+        act_stat = request.GET.get('act_stat', '')
+        taken_by = request.GET.get('taken_by', '')
+
+        # Start with all tickets
         tickets = Ticket.objects.all()
-        return render(request, 'admin_dashboard.html', {"tickets": tickets})
+
+        # Apply filters if they are present
+        if report_type:
+            tickets = tickets.filter(report_type=report_type)
+        if act_stat:
+            tickets = tickets.filter(act_stat=act_stat)
+        if taken_by:
+            tickets = tickets.filter(taken_by__icontains=taken_by)
+
+        # Handle sorting
+        sort_by = request.GET.get('sort_by', 'date_created')  # Default sort by date_created
+        sort_order = request.GET.get('sort_order', 'asc')
+        if sort_order == 'desc':
+            sort_by = '-' + sort_by
+
+        tickets = tickets.order_by(sort_by)
+
+        # Pass the filters back to the template
+        context = {
+            'tickets': tickets,
+            'report_type': report_type,
+            'act_stat': act_stat,
+            'taken_by': taken_by,
+            'sort_by': request.GET.get('sort_by', 'date_created'),
+            'sort_order': request.GET.get('sort_order', 'asc')
+        }
+        
+        return render(request, 'admin_dashboard.html', context)
+
     return redirect('login')
 
 # Technician Dashboard View
@@ -198,29 +233,53 @@ def technician_dashboard(request):
         return render(request, 'technician_dashboard.html')
     return redirect('login')
 
+from django.db.models import Q
 @login_required
 def open_tickets(request):
     if request.user.is_technician:
-        tickets = Ticket.objects.filter(act_stat='O')
+        tickets = Ticket.objects.filter(Q(act_stat='O') | Q(act_stat='DT'))
         return render(request, 'open_tickets.html', {'tickets': tickets})
     return redirect('login')
 
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Ticket
+from django.utils import timezone
+
 @login_required
 def update_ticket(request, ticket_id):
-    if request.user.is_technician and request.method == 'POST':
-        ticket = get_object_or_404(Ticket, id=ticket_id)
+    ticket = get_object_or_404(Ticket, id=ticket_id)
+
+    if request.method == 'POST':
         action_taken = request.POST.get('action_taken', '').strip()
+        act_stat = request.POST.get('act_stat', '').strip()
+        ftr_act = request.POST.get('ftr_act', '').strip()
+        fu_act = request.POST.get('fu_act', '').strip()
+
+        # Check if any action is taken and status is provided
         if action_taken:
             ticket.act_taken = action_taken
-            ticket.act_stat = 'S'
+            ticket.act_stat = act_stat
             ticket.taken_by = request.user.username
-        else:
-            ticket.act_taken = 'Chatbot'
-            ticket.act_stat = 'S'
-            ticket.taken_by = 'chatbot'
-        ticket.save()
+
+            # Always capture the date_action and time_action whenever an update is made
+            current_time = timezone.now()
+            ticket.date_action = current_time.date()  # Save current date
+            ticket.time_action = current_time.time()  # Save current time
+
+        # Save future action (ftr_act) if provided
+        if ftr_act in ['C', 'RTV', 'P', 'AN']:
+            ticket.ftr_act = ftr_act
+
+        # Save follow-up action (fu_act) if provided
+        if fu_act:
+            ticket.fu_act = fu_act
+
+        ticket.save()  # Save all updates to the ticket
         return redirect('open_tickets')
-    return redirect('login')
+
+    return render(request, 'update_ticket.html', {'ticket': ticket})
+
 
 @login_required
 def closed_tickets(request):
@@ -242,3 +301,14 @@ def user_tickets(request):
         tickets = Ticket.objects.filter(user_name=request.user.username, email=request.user.email)
         return render(request, 'user_tickets.html', {'tickets': tickets})
     return redirect('login')
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from app1.models import Ticket
+
+@login_required
+def dashboard_analysis(request):
+    if request.user.is_admin:  # Ensure that only admin users can access the page
+        total_tickets = Ticket.objects.count()  # Count total tickets
+        return render(request, 'AdminDashboard.html', {'total_tickets': total_tickets})
+    return redirect('login')  # Redirect non-admin users to the login page

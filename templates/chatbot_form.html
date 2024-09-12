@@ -2,39 +2,175 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chatbot Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borang Laporan Masalah</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container-fluid {
+            margin-top: 40px;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+        }
+        .sidebar a, .sidebar button {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background-color: #007bff;
+            border: none;
+            text-align: center;
+            width: 100%;
+        }
+        .sidebar a:hover, .sidebar button:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+        .form-container {
+            margin-left: 220px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h2>Submit Your Issue</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav class="col-md-2 sidebar">
+                {% if user.is_admin %}
+                    <a href="{% url 'admin_dashboard' %}">Laman Pentadbir</a>
+                {% elif user.is_technician %}
+                    <a href="{% url 'technician_dashboard' %}">Laman Pasukan Teknikal</a>
+                {% elif user.is_user %}
+                    <a href="{% url 'user_dashboard' %}">Laman Pengguna</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'user_tickets' %}">Semak Sejarah Laporan</a>
+                </li>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+               
+            </nav>
 
-    <nav>
-        <!-- Link to the appropriate dashboard based on user role -->
-        {% if user.is_admin %}
-            <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
-        {% elif user.is_technician %}
-            <a href="{% url 'technician_dashboard' %}">Technician Dashboard</a>
-        {% elif user.is_user %}
-            <a href="{% url 'user_dashboard' %}">User Dashboard</a>
-        {% else %}
-            <!-- Handle case where user role is not defined -->
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-        
-        <!-- Link to logout -->
-        <a href="{% url 'logout' %}">Logout</a>
-    </nav>
+            <!-- Main Content -->
+            <main class="col-md-10 ms-sm-auto form-container">
+                <h2 class="mb-4 text-center">Borang Laporan</h2>
+
+                <!-- Form Container -->
+                <div>
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <!-- Responsive Grid for Form Fields -->
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                {{ form.username.label_tag }}
+                                {{ form.username }}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                {{ form.dprt.label_tag }}
+                                {{ form.dprt }}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                {{ form.post.label_tag }}
+                                {{ form.post }}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                {{ form.env.label_tag }}
+                                {{ form.env }}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                {{ form.pc_ip.label_tag }}
+                                {{ form.pc_ip }}
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                {{ form.report_type.label_tag }}
+                                {{ form.report_type }}
+                            </div>
+
+                            <div class="col-md-6 mb-3" id="hw_type_field">
+                                {{ form.hw_type.label_tag }}
+                                {{ form.hw_type }}
+                            </div>
+
+                            <div class="col-md-6 mb-3" id="apps_sw_field">
+                                {{ form.apps_sw.label_tag }}
+                                {{ form.apps_sw }}
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                {{ form.report_desc.label_tag }}
+                                {{ form.report_desc }}
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Hantar</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript for Toggling Fields -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const reportTypeField = document.getElementById('id_report_type');
+            const hwTypeField = document.getElementById('hw_type_field');
+            const appsSwField = document.getElementById('apps_sw_field');
+
+            // Function to toggle fields based on report type
+            function toggleFields() {
+                const reportTypeValue = reportTypeField.value;
+                
+                if (reportTypeValue === 'HW') {
+                    hwTypeField.style.display = 'block';
+                    appsSwField.style.display = 'none';
+                } else if (reportTypeValue === 'SW') {
+                    hwTypeField.style.display = 'none';
+                    appsSwField.style.display = 'block';
+                } else {
+                    hwTypeField.style.display = 'none';
+                    appsSwField.style.display = 'none';
+                }
+            }
+
+            // Initially toggle fields based on the default value
+            toggleFields();
+
+            // Listen for changes in the report type field
+            reportTypeField.addEventListener('change', toggleFields);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-

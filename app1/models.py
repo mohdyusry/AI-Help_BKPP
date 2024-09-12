@@ -5,9 +5,9 @@ class Ticket(models.Model):
     ticket_no = models.CharField(max_length=50)
     user_name = models.CharField(max_length=100)
     email = models.EmailField()
-    dprt = models.CharField(max_length=100)  # Assuming 'dprt' means department
-    post = models.CharField(max_length=100)
-    env = models.CharField(max_length=50)
+    dprt = models.CharField(max_length=100, null=False, blank=False)  # Assuming 'dprt' means department
+    post = models.CharField(max_length=100, null=False, blank=False)
+    env = models.CharField(max_length=50, null=False, blank=False)
     pc_name = models.CharField(max_length=100)
     pc_ip = models.GenericIPAddressField()
     hw_sn = models.CharField(max_length=100)
@@ -58,9 +58,6 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.ticket_no
-
-# models.py
-# models.py
 
  # models.py
 

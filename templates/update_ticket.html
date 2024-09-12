@@ -3,30 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Ticket #{{ ticket.ticket_no }}</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Tindakan Tiket #{{ ticket.ticket_no }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container-fluid {
+            margin-top: 40px;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+        }
+        .sidebar a, .sidebar button {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background-color: #007bff;
+            border: none;
+            text-align: center;
+            width: 100%;
+        }
+        .sidebar a:hover, .sidebar button:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+        .form-container {
+            margin-left: 220px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        .btn-container {
+            text-align: left;  /* Align buttons to the left */
+        }
+    </style>
+    <script>
+        // Function to show/hide fields based on act_stat value
+        function toggleFields() {
+            var actStat = document.getElementById("act_stat").value;
+            var followUpField = document.getElementById("follow-up-action");
+            var futureActionField = document.getElementById("future-action");
+            
+            // Hide or show fields based on the selected value of act_stat
+            if (actStat === "S") {
+                followUpField.style.display = "none";
+                futureActionField.style.display = "none";
+            } else {
+                followUpField.style.display = "block";
+                futureActionField.style.display = "block";
+            }
+        }
+
+        // Ensure fields are toggled on page load
+        window.onload = function() {
+            toggleFields();  // Call the function to set the initial state
+        };
+
+        // Function to toggle the ChatGPT iframe
+        function toggleIframe() {
+            const iframeSection = document.getElementById('chatbase-iframe');
+            iframeSection.style.display = (iframeSection.style.display === 'none' || iframeSection.style.display === '') 
+                                          ? 'block' : 'none';  // Toggle iframe visibility
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Respond to Ticket #{{ ticket.ticket_no }}</h1>
-        <p><strong>Description:</strong> {{ ticket.report_desc }}</p>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <nav class="col-md-2 sidebar">
+                {% if user.is_admin %}
+                    <a href="{% url 'admin_dashboard' %}">Dashboard Pentadbir</a>
+                {% elif user.is_technician %}
+                    <a href="{% url 'technician_dashboard' %}">Dashboard Pasukan Teknikal</a>
+                {% elif user.is_user %}
+                    <a href="{% url 'user_dashboard' %}">Dashboard Pengguna</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </nav>
 
-        {% if error_message %}
-        <div class="alert alert-danger">{{ error_message }}</div>
-        {% endif %}
+            <!-- Main Content -->
+            <main class="col-md-10 ms-sm-auto form-container">
+                <h2 class="mb-4 text-center">Tindakan Tiket #{{ ticket.ticket_no }}</h2>
 
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="act_taken">Action Taken</label>
-                <textarea class="form-control" id="act_taken" name="action_taken" required>{{ ticket.act_taken }}</textarea>
-            </div>
-            <div class="form-group">
-                <label for="act_stat">Action Status</label>
-                <input type="text" class="form-control" id="act_stat" name="act_stat" value="{{ ticket.act_stat }}">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit Response</button>
-        </form>
+                <!-- Form Container -->
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <!-- Responsive Grid for Form Fields -->
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="report_desc">Deskripsi Masalah</label>
+                            <p>{{ ticket.report_desc }}</p>
+                        </div>
+
+                        <div class="col-md-10 mb-3">
+                            <label for="act_taken">Tindakan Diambil</label>
+                            <textarea class="form-control" id="act_taken" name="action_taken" required>{{ ticket.act_taken }}</textarea>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="act_stat">Status Tindakan</label>
+                            <select class="form-control" id="act_stat" name="act_stat" required onchange="toggleFields()">
+                                <option value="S" {% if ticket.act_stat == 'S' %}selected{% endif %}>Selesai</option>
+                                <option value="O" {% if ticket.act_stat == 'O' %}selected{% endif %}>Terbuka</option>
+                                <option value="DT" {% if ticket.act_stat == 'DT' %}selected{% endif %}>Dalam Tindakan</option>
+                            </select>
+                        </div>
+
+                        <!-- Conditionally show/hide fu_act and ftr_act based on act_stat -->
+                        <div class="col-md-6 mb-3" id="follow-up-action">
+                            <label for="fu_act">Tindakan Susulan</label>
+                            <input type="text" class="form-control" id="fu_act" name="fu_act" value="{{ ticket.fu_act }}">
+                        </div>
+
+                        <div class="col-md-6 mb-3" id="future-action">
+                            <label for="ftr_act">Tindakan Akan Datang</label>
+                            <select class="form-control" id="ftr_act" name="ftr_act">
+                                <option value="" {% if not ticket.ftr_act %}selected{% endif %}>Pilih Tindakan Akan Datang</option>
+                                <option value="C" {% if ticket.ftr_act == 'C' %}selected{% endif %}>Tutup</option>
+                                <option value="RTV" {% if ticket.ftr_act == 'RTV' %}selected{% endif %}>Rujuk Kepada Pembekal</option>
+                                <option value="P" {% if ticket.ftr_act == 'P' %}selected{% endif %}>Pending</option>
+                                <option value="AN" {% if ticket.ftr_act == 'AN' %}selected{% endif %}>Perlu Tindakan</option>
+                            </select>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="col-md-12 btn-container">
+                            <button type="submit" class="btn btn-primary">Hantar Maklumbalas Tindakan</button>
+                            <a href="{% url 'open_tickets' %}" class="btn btn-danger">Batal</a>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Button to toggle ChatGPT iframe -->
+                <button class="btn btn-warning mt-3" onclick="toggleIframe()">Jana Bantuan Teknikal ChatGPT</button>
+
+                <!-- ChatGPT iframe section, initially hidden -->
+                <div class="chatbase-iframe" id="chatbase-iframe" style="display: none;">
+                    <iframe
+                        src="https://www.chatbase.co/chatbot-iframe/NOySOOfsaDm7NlexGmChm"
+                        width="100%"
+                        style="height: 100%; min-height: 700px;"
+                        frameborder="0"
+                    ></iframe>
+                </div>
+            </main>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

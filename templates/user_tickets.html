@@ -9,84 +9,122 @@
         body {
             background-color: #f8f9fa;
         }
-        .container {
+        .container-fluid {
             margin-top: 40px;
         }
-        .table {
-            margin-top: 20px;
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 200px;
         }
-        .nav-link {
-            color: #007bff;
+        .sidebar a, .sidebar button {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background-color: #007bff;
+            border: none;
+            text-align: center;
+            width: 100%;
         }
-        .nav-link:hover {
-            text-decoration: underline;
+        .sidebar a:hover, .sidebar button:hover {
+            background-color: #0056b3;
+            text-decoration: none;
         }
-        .card {
-            margin-bottom: 30px;
+        .table-container {
+            margin-left: 220px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            font-weight: bold;
+        }
+        .table thead {
+            background-color: #343a40;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Page Header -->
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-12">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="mb-0">Senarai Ticket Yang Telah Dibuat</h3>
-                </div>
-                <div class="card-body">
-                    <!-- Navigation Links -->
-                    <nav class="nav mb-4">
-                        <a href="{% url 'user_dashboard' %}" class="nav-link">Kembali Ke Dashboard</a>
-                        <a href="{% url 'logout' %}" class="nav-link">Logout</a>
-                    </nav>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar Navigation -->
+        <nav class="col-md-2 sidebar">
+            <a href="{% url 'user_dashboard' %}">Kembali Ke Laman Pengguna</a>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Keluar</button>
+            </form>
+        </nav>
 
-                    <!-- Ticket Table -->
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th>Ticket No</th>
-                                    <th>Jenis Laporan</th>
-                                    <th>Jenis Perkakasan</th>
-                                    <th>Aplikasi/Perisian</th>
-                                    <th>Diskripsi Laporan</th>
-                                    <th>PC IP</th>
-                                    <th>Tindakan Diambil</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for ticket in tickets %}
-                                <tr>
-                                    <td>{{ ticket.ticket_no }}</td>
-                                    <td>{{ ticket.report_type }}</td>
-                                    <td>{{ ticket.hw_type }}</td>
-                                    <td>{{ ticket.apps_sw }}</td>
-                                    <td>{{ ticket.report_desc }}</td>
-                                    <td>{{ ticket.pc_ip }}</td>
-                                    <td>{{ ticket.act_taken }}</td>
-                                    <td>
-                                        {% if ticket.act_stat == "O" %}
-                                            <span class="badge bg-warning text-dark">Open</span>
-                                        {% elif ticket.act_stat == "S" %}
-                                            <span class="badge bg-success">Solved</span>
-                                        {% else %}
-                                            <span class="badge bg-secondary">Unknown</span>
-                                        {% endif %}
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+        <!-- Main Content -->
+        <div class="col-md-10 ms-sm-auto table-container">
+            <!-- Page Header -->
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0">Senarai Ticket Yang Telah Dilaporkan</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Ticket Table -->
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>No Tiket</th>
+                                            <th>Jenis Laporan</th>
+                                            <th>Jenis Perkakasan</th>
+                                            <th>Aplikasi/Perisian</th>
+                                            <th>Diskripsi Laporan</th>
+                                            <th>PC IP</th>
+                                            <th>Tindakan Diambil</th>
+                                            <th>Status</th>
+                                            <th>Tarikh Cipta</th>
+                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for ticket in tickets %}
+                                        <tr>
+                                            <td>{{ ticket.ticket_no }}</td>
+                                            <td>{{ ticket.report_type }}</td>
+                                            <td>{{ ticket.hw_type }}</td>
+                                            <td>{{ ticket.apps_sw }}</td>
+                                            <td>{{ ticket.report_desc }}</td>
+                                            <td>{{ ticket.pc_ip }}</td>
+                                            <td>{{ ticket.act_taken }}</td>
+                                            <td>
+                                                {% if ticket.act_stat == "O" %}
+                                                    <span class="badge bg-warning text-dark">Terbuka</span>
+                                                    <td>{{ ticket.date_created }}</td>
+                                                {% elif ticket.act_stat == "S" %}
+                                                    <span class="badge bg-success">Selesai</span>
+                                                    <td>{{ ticket.date_action }}</td>
+                                                {% else %}
+                                                    <span class="badge bg-secondary">Dalam Tindakan</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- No tickets found message -->
+                            {% if not tickets %}
+                            <p class="text-center">Tiada tiket laporan yang dijumpai.</p>
+                            {% endif %}
+                        </div>
                     </div>
-
-                    <!-- No tickets found message -->
-                    {% if not tickets %}
-                    <p class="text-center">Tiada tiket laporan yang dijumpai.</p>
-                    {% endif %}
                 </div>
             </div>
         </div>

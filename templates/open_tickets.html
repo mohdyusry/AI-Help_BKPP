@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Tickets</title>
+    <title>Tiket Terbuka</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -25,6 +25,7 @@
             <nav>
                 <a href="{% url 'closed_tickets' %}" class="btn btn-info">Papar Tiket Ditutup</a> <!-- Link to Closed Tickets -->
                 <a href="{% url 'technician_dashboard' %}" class="btn btn-info">Pulang ke Dashboard</a>
+
                 <form action="{% url 'logout' %}" method="post" class="d-inline">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Keluar</button>
@@ -38,6 +39,7 @@
             <table class="table table-bordered table-striped">
                 <thead class="thead-dark">
                     <tr>
+
                         <th>No Ticket</th>
                         <th>Nama Pegawai</th>
                         <th>Jenis Laporan</th>
@@ -45,6 +47,7 @@
                         <th>Tarikh Cipta Laporan</th>
                         <th>Status Tindakan</th>
                         <th>Tindakan</th> <!-- Link to update page -->
+
                     </tr>
                 </thead>
                 <tbody>
@@ -65,7 +68,9 @@
                 </tbody>
             </table>
             {% else %}
+
             <p>Tiada Tiket Yang Perlu Diambil Tindakan.</p>
+
             {% endif %}
         </section>
     </div>

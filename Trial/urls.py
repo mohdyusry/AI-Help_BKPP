@@ -20,7 +20,7 @@ from app1 import views
 from django.contrib.auth import views as auth_views
 #from app1.forms import EmailAuthenticationForm
 from app1.views import (
-    login_view, logout_view, SignUp, admin_dashboard, technician_dashboard,
+    login_view, logout_view, SignUp, admin_dashboard, technician_dashboard, dashboard_analysis,
     user_dashboard, user_tickets, chatbot_view, open_tickets, update_ticket, closed_tickets
 )
 
@@ -33,11 +33,13 @@ urlpatterns = [
     path('admin_dashboard/', admin_dashboard, name='admin_dashboard'),
     path('technician_dashboard', technician_dashboard, name='technician_dashboard'),
     path('user_dashboard', user_dashboard, name='user_dashboard'),
-    path('user-tickets/', user_tickets, name='user_tickets'),
+    path('user-tickets/',views.user_tickets, name='user_tickets'),
     path('chatbot/', chatbot_view, name='chatbot_view'),
     path('open-tickets/', open_tickets, name='open_tickets'),
     path('update-ticket/<int:ticket_id>/', update_ticket, name='update_ticket'),
     path('closed-tickets/', closed_tickets, name='closed_tickets'),
+    path('dashboard_analysis/', views.dashboard_analysis, name='AdminDashboard'),  # New path for analysis
+
     #path('admin-dashboard/', dashboard_view, name='admin_dashboard_view'),
     #path('technician-dashboard/', dashboard_view, name='technician_dashboard'),
    # path('dashboard/', dashboard_view, name='dashboard_view'),

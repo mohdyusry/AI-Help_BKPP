@@ -39,17 +39,10 @@ deactivate nondestructive
 if [ "${OSTYPE:-}" = "cygwin" ] || [ "${OSTYPE:-}" = "msys" ] ; then
     # transform D:\path\to\venv to /d/path/to/venv on MSYS
     # and to /cygdrive/d/path/to/venv on Cygwin
-<<<<<<< Updated upstream
-    export VIRTUAL_ENV=$(cygpath "D:\System_Prototype\BKPP_AI-Help\AI-Help_BKPP\AI-Help_BKPP\aihelp")
-else
-    # use the path as-is
-    export VIRTUAL_ENV="D:\System_Prototype\BKPP_AI-Help\AI-Help_BKPP\AI-Help_BKPP\aihelp"
-=======
     export VIRTUAL_ENV=$(cygpath "D:\Proposed Project For ACE\backup AHBKPP\env2")
 else
     # use the path as-is
     export VIRTUAL_ENV="D:\Proposed Project For ACE\backup AHBKPP\env2"
->>>>>>> Stashed changes
 fi
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -66,15 +59,9 @@ fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
-<<<<<<< Updated upstream
-    PS1="(aihelp) ${PS1:-}"
-    export PS1
-    VIRTUAL_ENV_PROMPT="(aihelp) "
-=======
     PS1="(env2) ${PS1:-}"
     export PS1
     VIRTUAL_ENV_PROMPT="(env2) "
->>>>>>> Stashed changes
     export VIRTUAL_ENV_PROMPT
 fi
 

@@ -14,7 +14,7 @@
         }
         .sidebar {
             height: 100vh;
-            background-color: #343a40;
+            background-color: #ffffff;
         }
         .sidebar a {
             color: #ffffff;
@@ -36,10 +36,6 @@
             margin-bottom: 30px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .table thead {
-            background-color: #343a40;
-            color: #fff;
-        }
         .greeting {
             margin-bottom: 20px;
         }
@@ -58,23 +54,19 @@
     <div class="container">
         <div class="row">
             <!-- Sidebar Navigation -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar py-4">
-                <ul class="nav flex-column">
-                    <h4 class="text-white text-center mt-3">Ai-Help</h4>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admin_dashboard' %}">Kembali ke Dashboard</a>  <!-- Link back to Admin Dashboard -->
-                    </li>
-                    <li class="nav-item">
-                        <form action="{% url 'logout' %}" method="post" class="form-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-link text-white">Log Keluar</button>
-                        </form>
-                    </li>
-                </ul>
+            <nav class="col-md-2 sidebar bg-dark py-4">
+                <h4 class="text-white text-center mt-3">Ai-Help</h4>
+                <a href="{% url 'admin_dashboard' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">
+                    Kembali ke Dashboard
+                </a>
+                <form action="{% url 'logout' %}" method="post" class="text-center">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger w-100 py-2 mt-2">Log Keluar</button>
+                </form>
             </nav>
 
             <!-- Main Content -->
-            <main class="col-md-9 col-lg-10">
+            <main class="col-md-10 ms-sm-auto">
                 <!-- Greeting Section in a Card -->
                 <div class="card shadow-sm">
                     <div class="card-header bg-primary text-white">

@@ -14,18 +14,15 @@
         }
         .sidebar {
             height: 100vh;
-            background-color: #343a40;
+            background-color: #ffffff;
         }
-        .sidebar a, .sidebar button {
+        .sidebar a {
             color: #ffffff;
             padding: 15px 20px;
             display: block;
             font-size: 1.1rem;
-            text-align: center;
-            border: none;
-            width: 100%;
         }
-        .sidebar a:hover, .sidebar button:hover {
+        .sidebar a:hover {
             background-color: #495057;
             text-decoration: none;
         }
@@ -43,9 +40,6 @@
             background-color: #343a40;
             color: #fff;
         }
-        .greeting {
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
@@ -58,23 +52,17 @@
     <div class="container">
         <div class="row">
             <!-- Sidebar Navigation -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar py-4">
-                <ul class="nav flex-column">
-                    <h4 class="text-white text-center mt-3">Ai-Help</h4>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'user_dashboard' %}">Kembali Ke Laman Pengguna</a>
-                    </li>
-                    <li class="nav-item">
-                        <form action="{% url 'logout' %}" method="post" class="form-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-link text-white">Keluar</button>
-                        </form>
-                    </li>
-                </ul>
+            <nav class="col-md-2 sidebar bg-dark py-4">
+                <h4 class="text-white text-center mt-3">Ai-Help</h4>
+                <a href="{% url 'user_dashboard' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">Kembali Ke Laman Pengguna</a>
+                <form action="{% url 'logout' %}" method="post" class="text-center">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger w-100 py-2 mt-2">Keluar</button>
+                </form>
             </nav>
 
             <!-- Main Content -->
-            <main class="col-md-9 col-lg-10">
+            <main class="col-md-10 ms-sm-auto">
                 <!-- Greeting Section in a Card -->
                 <div class="card shadow-sm">
                     <div class="card-header bg-primary text-white">
@@ -91,7 +79,7 @@
                         <!-- Ticket Table -->
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
-                                <thead>
+                                <thead class="table-dark">
                                     <tr>
                                         <th>No Tiket</th>
                                         <th>Jenis Laporan</th>

@@ -38,7 +38,7 @@ urlpatterns = [
     path('open-tickets/', open_tickets, name='open_tickets'),
     path('update-ticket/<int:ticket_id>/', update_ticket, name='update_ticket'),
     path('closed-tickets/', closed_tickets, name='closed_tickets'),
-    path('dashboard_analysis/', views.dashboard_analysis, name='AdminDashboard'),  # New path for analysis
+    path('dashboard_analysis/', views.dashboard_analysis, name='dashboard_analysis'),  # New path for analysis
 
     #path('admin-dashboard/', dashboard_view, name='admin_dashboard_view'),
     #path('technician-dashboard/', dashboard_view, name='technician_dashboard'),

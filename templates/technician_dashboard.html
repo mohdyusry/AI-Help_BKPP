@@ -14,7 +14,7 @@
         }
         .sidebar {
             height: 100vh;
-            background-color: #343a40;
+            background-color: #ffffff;
         }
         .sidebar a {
             color: #ffffff;
@@ -50,24 +50,28 @@
         </button>
     </nav>
 
-    <!-- Main Layout -->
-    <div class="container">
-        <div class="row">
-            <!-- Sidebar Navigation -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar py-4">
-                <ul class="nav flex-column">
-                    <h4 class="text-white text-center mt-3">Ai-Help</h4>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'open_tickets' %}">Tiket Laporan</a>
-                    </li>
-                    <li class="nav-item">
-                        <form action="{% url 'logout' %}" method="post" class="form-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-link text-white">Keluar</button>
-                        </form>
-                    </li>
-                </ul>
-            </nav>
+        <!-- Main Layout -->
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar Navigation -->
+                <nav class="col-md-2 sidebar bg-dark py-4">
+        <h4 class="text-white text-center mt-3">Ai-Help</h4>
+
+        <!-- Links -->
+        <a href="{% url 'open_tickets' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">
+            Papar Tiket Terbuka
+        </a>
+<!--        <a href="{% url 'technician_dashboard' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">-->
+<!--            Pulang ke Laman Teknikal-->
+<!--        </a>-->
+
+        <!-- Logout Form -->
+        <form action="{% url 'logout' %}" method="post" class="text-center">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100 py-2 mt-2">Log Keluar</button>
+        </form>
+    </nav>
+
 
             <!-- Main Content -->
             <main class="col-md-9 col-lg-10">

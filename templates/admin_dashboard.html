@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +48,7 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">Dashboard Ketua Seksyen</a>
+        <h1><a class="navbar-brand" href="#">Dashboard Ketua Seksyen</a></h1>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -65,9 +65,16 @@
                         <a class="nav-link" href="{% url 'chatbot_view' %}">Cipta Laporan</a>
                     </li>
                     <li class="nav-item">
+                        <!-- Button to redirect to Dashboard Analysis -->
+                        <a class="nav-link" href="{% url 'dashboard_analysis' %}">Dashboard Analisa 1</a>  <!-- Add this button -->
+                    </li>
+                    <li class="nav-item">-->
+                        <a class="nav-link" href="http://127.0.0.1:8050/" target="_blank">Dashboard Analisa 2</a>
+                    </li>
+                    <li class="nav-item">
                         <form action="{% url 'logout' %}" method="post" class="form-inline">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-link text-white">Logout</button>
+                            <button type="submit" class="btn btn-link text-white">Log Keluar</button>
                         </form>
                     </li>
                 </ul>
@@ -78,10 +85,10 @@
                 <!-- Greeting Section in a Card -->
                 <div class="card shadow-sm">
                     <div class="card-header bg-primary text-white">
-                        <h3 class="mb-0">Selamat datang, {{ user.username }}!</h3>
+                        <h4 class="mb-0">Selamat datang, {{ user.username }}!</h4>
                     </div>
                     <div class="card-body">
-                        <p>Anda berada di Dashboard Ketua Seksyen. Sila semak laporan tindakan di bawah.</p>
+                        <p>Anda berada di Dashboard Ketua Seksyen. Sila semak laporan tindakan di bawah. Anda juga boleh menjana analisis maklumat laporan menggunakan Dashboard Analisa di Menu Navigasi </p>
                     </div>
                 </div>
 

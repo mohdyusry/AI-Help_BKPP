@@ -1,4 +1,3 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,98 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ai-Help Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            background-color: #f7f9fc;
+            font-family: 'Arial', sans-serif;
         }
-
-        .login-container {
-            background: #ffffff;
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            width: 100%;
-            max-width: 400px;
         }
-
-        .login-form h2 {
-            margin-bottom: 20px;
-            text-align: center;
+        h2 {
+            font-weight: 700;
+            color: #007bff;
         }
-
-        .form-group label {
-            margin-bottom: 10px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            font-size: 1rem;
-            display: block;
+        .form-label {
+            font-weight: 500;
         }
-
+        .help-block {
+            font-size: 0.9em;
+            color: #dc3545;
+        }
         .btn-primary {
             background-color: #007bff;
-            border-color: #007bff;
-            width: 100%;
+            border: none;
+            padding: 10px 0;
+            font-size: 1.2rem;
         }
-
-        .btn-link,
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
         .btn-secondary {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
+            background-color: #6c757d;
+            border: none;
+            margin-top: 20px;
+        }
+        .text-center a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+        .form-text {
+            font-size: 0.85rem;
+            color: #6c757d;
         }
     </style>
 </head>
 
 <body>
-    <div class="login-container">
-        <div class="login-form">
-            <h2>Login Ai-Help</h2>
-            <form method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-primary">Login</button>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <h2 class="text-center mb-4">Login Ai-Help</h2>
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <!-- Login form fields -->
+                        <div class="mb-3">
+                            {{ form.as_p }}
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary w-100 mt-3">Log Masuk</button>
+
+                        <!-- Error message -->
+                        {% if form.errors %}
+                        <div class="alert alert-danger mt-3">
+                            {{ form.errors }}
+                        </div>
+                        {% endif %}
+                    </form>
+
+                    <!-- Link to signup page -->
+                    <p class="mt-4 text-center">
+                        Tiada lagi akaun pengguna? <a href="{% url 'signup' %}">Sila Daftar Di Sini</a>
+                    </p>
+
+                    <!-- Back to home page button -->
+                    <a href="{% url 'landing_page' %}" class="btn btn-secondary w-100 mt-3">Balik ke Laman Utama Ai-Help</a>
                 </div>
-             </form>
-             {% if form.errors %}
-                <p style="color:red;">{{ form.errors }}</p>
-             {% endif %}
-             <p>Tiada lagi akaun pengguna? <a href="{% url 'signup' %}">Sila Daftar Di Sini</a></p>
+            </div>
         </div>
-        <a href="{% url 'landing_page' %}" class="btn btn-secondary">Balik ke Laman Utama Ai-Help</a>
     </div>
-    <script>
-        window.embeddedChatbotConfig = {
-            chatbotId: "NOySOOfsaDm7NlexGmChm",
-            domain: "www.chatbase.co"
-        };
-    </script>
-    <script src="https://www.chatbase.co/embed.min.js" chatbotId="NOySOOfsaDm7NlexGmChm" domain="www.chatbase.co" defer></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
-
-
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Login</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h2>Login</h2>-->
-<!--    <form method="post">-->
-<!--        {% csrf_token %}-->
-<!--        {{ form.as_p }}-->
-<!--        <button type="submit">Login</button>-->
-<!--    </form>-->
-<!--    <p>Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>-->
-<!--</body>-->
-<!--</html>-->

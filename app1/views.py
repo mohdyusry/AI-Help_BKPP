@@ -237,7 +237,7 @@ from django.db.models import Q
 @login_required
 def open_tickets(request):
     if request.user.is_technician:
-        tickets = Ticket.objects.filter(Q(act_stat='O') | Q(act_stat='DT'))
+        tickets = Ticket.objects.filter(Q(act_stat='O') | Q(act_stat='DT')).order_by('-date_created')
         return render(request, 'open_tickets.html', {'tickets': tickets})
     return redirect('login')
 
@@ -284,7 +284,7 @@ def update_ticket(request, ticket_id):
 @login_required
 def closed_tickets(request):
     if request.user.is_technician:
-        tickets = Ticket.objects.filter(act_stat='S', taken_by=request.user.username)
+        tickets = Ticket.objects.filter(act_stat='S', taken_by=request.user.username).order_by('-date_action')
         return render(request, 'closed_tickets.html', {'tickets': tickets})
     return redirect('login')
 
@@ -312,3 +312,29 @@ def dashboard_analysis(request):
         total_tickets = Ticket.objects.count()  # Count total tickets
         return render(request, 'dashboard_analysis.html', {'total_tickets': total_tickets})
     return redirect('login')  # Redirect non-admin users to the login page
+
+
+import pygwalker as pyg
+import pandas as pd
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from app1.models import Ticket
+
+
+@login_required
+def dashboard_analysis(request):
+    if request.user.is_admin:  # Ensure only admin users can access the page
+        total_tickets = Ticket.objects.count()  # Count total tickets
+
+        # Convert Django queryset to DataFrame
+        tickets_df = pd.DataFrame(list(Ticket.objects.all().values()))
+
+        # Use Pygwalker to create an interactive chart
+        pyg_html = pyg.walk(tickets_df).to_html()  # Generate Pygwalker HTML code
+
+        return render(request, 'dashboard_analysis.html', {
+            'total_tickets': total_tickets,
+            'pyg_html': pyg_html  # Pass Pygwalker HTML to template
+        })
+
+    return redirect('login')  # Redirect non-admin users to login

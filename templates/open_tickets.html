@@ -4,75 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tiket Terbuka</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <style>
         body {
             background-color: #f8f9fa;
         }
-        .container {
-            margin-top: 20px;
+        .container-fluid {
+            margin-top: 40px;
         }
-        .table {
-            margin-top: 20px;
+        .sidebar {
+            height: 100vh;
+            background-color: #343a40;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 220px;
+        }
+        .sidebar a, .sidebar button {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #007bff;
+            border: none;
+            text-align: center;
+            width: 90%;
+            margin-left: 5%;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .sidebar a:hover, .sidebar button:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+        .table-container {
+            margin-left: 250px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        .table thead {
+            background-color: #343a40;
+            color: white;
+        }
+        /* Improved button styling for "Ambil Tindakan" */
+        .btn-action {
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-action i {
+            margin-right: 5px;
+        }
+        .btn-action:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header for Open Tickets -->
-        <header class="d-flex justify-content-between align-items-center">
-            <h2>Maklumat Tiket Laporan Terbuka</h2>
-            <nav>
-                <a href="{% url 'closed_tickets' %}" class="btn btn-info">Papar Tiket Ditutup</a> <!-- Link to Closed Tickets -->
-                <a href="{% url 'technician_dashboard' %}" class="btn btn-info">Pulang ke Dashboard</a>
 
-                <form action="{% url 'logout' %}" method="post" class="d-inline">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Keluar</button>
-                </form>
-            </nav>
-        </header>
 
-        <!-- Open Tickets Table -->
-        <section>
-            {% if tickets %}
-            <table class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
 
-                        <th>No Ticket</th>
-                        <th>Nama Pegawai</th>
-                        <th>Jenis Laporan</th>
-                        <th>Deskripsi Laporan</th>
-                        <th>Tarikh Cipta Laporan</th>
-                        <th>Status Tindakan</th>
-                        <th>Tindakan</th> <!-- Link to update page -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar Navigation -->
+        <nav class="col-md-2 sidebar">
+            <h4 class="text-white text-center mt-3">Ai-Help</h4>
+            <a href="{% url 'closed_tickets' %}">Papar Tiket Ditutup</a>
+            <a href="{% url 'technician_dashboard' %}">Pulang ke Laman Teknikal</a>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Log Keluar</button>
+            </form>
+        </nav>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for ticket in tickets %}
-                    <tr>
-                        <td>{{ ticket.ticket_no }}</td>
-                        <td>{{ ticket.user_name }}</td>
-                        <td>{{ ticket.report_type }}</td>
-                        <td>{{ ticket.report_desc }}</td>
-                        <td>{{ ticket.date_created }}</td>
-                        <td>{{ ticket.act_stat }}</td>
-                        <td>
-                            <!-- Link to the page where action_taken can be updated -->
-                            <a href="{% url 'update_ticket' ticket.id %}" class="btn btn-primary btn-sm">Ambil Tindakan</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-
-            <p>Tiada Tiket Yang Perlu Diambil Tindakan.</p>
-
-            {% endif %}
-        </section>
+        <!-- Main Content -->
+        <div class="col-md-10 ms-sm-auto table-container">
+            <!-- Page Header -->
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0">Maklumat Tiket Laporan Terbuka</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Open Tickets Table -->
+                            <div class="table-responsive">
+                                {% if tickets %}
+                                <table class="table table-bordered table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>No Tiket</th>
+                                            <th>Nama Pegawai</th>
+                                            <th>Jenis Laporan</th>
+                                            <th>Deskripsi Laporan</th>
+                                            <th>Tarikh Cipta Laporan</th>
+                                            <th>Status Tindakan</th>
+                                            <th>Tindakan</th> <!-- Link to update page -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for ticket in tickets %}
+                                        <tr>
+                                            <td>{{ ticket.ticket_no }}</td>
+                                            <td>{{ ticket.user_name }}</td>
+                                            <td>{{ ticket.report_type }}</td>
+                                            <td>{{ ticket.report_desc }}</td>
+                                            <td>{{ ticket.date_created }}</td>
+                                            <td>{{ ticket.act_stat }}</td>
+                                            <td>
+                                                <!-- Improved button with icon and better style -->
+                                                <a href="{% url 'update_ticket' ticket.id %}"
+                                                   class="btn btn-sm {% if ticket.act_stat == 'O' %}btn-danger{% elif ticket.act_stat == 'DT' %}btn-primary{% endif %}">
+                                                   <i class="fas fa-tools"></i>
+                                                   {% if ticket.act_stat == 'O' %}
+                                                       Ambil Tindakan
+                                                   {% elif ticket.act_stat == 'DT' %}
+                                                       Dalam Tindakan
+                                                   {% endif %}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                {% else %}
+                                <p class="text-center">Tiada Tiket Yang Perlu Diambil Tindakan.</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+<!-- Include Font Awesome for the icon -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

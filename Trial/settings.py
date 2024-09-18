@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-p4-!0n(odg1as0jo!&8w2wpj4d)4%_$xpxa84+^0^w+w1y_e%b
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '0.0.0.0','ai-help-bkpp.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','ai-help-bkpp.onrender.com']
 #ALLOWED_HOSTS = []
 # settings.py
 

@@ -96,6 +96,16 @@ DATABASES = {
         },
     }
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqbpro',
+#         'OPTIONS': {
+#             'timeout': 60,  # increase timeout to 20 seconds
+#         },
+#     }
+# }
 
 AUTHENTICATION_BACKENDS = ['your_app.backends.EmailBackend', 'django.contrib.auth.backends.ModelBackend']
 
@@ -140,7 +150,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTHENTICATION_BACKENDS = [
-    'app1.backends.EmailBackend',  # Replace 'your_app' with your app's name
-    'django.contrib.auth.backends.ModelBackend',
-]
+# AUTHENTICATION_BACKENDS = [
+#     'app1.backends.EmailBackend',  # Replace 'your_app' with your app's name
+#     'django.contrib.auth.backends.ModelBackend',
+# ]

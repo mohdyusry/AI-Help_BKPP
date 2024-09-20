@@ -62,7 +62,7 @@
                 <a href="{% url 'chatbot_view' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">Cipta Laporan</a>
                 <a href="{% url 'dashboard_analysis' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">Dashboard Analisa 1</a>
                 <a href="http://127.0.0.1:8050/" target="_blank" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">Dashboard Analisa 2</a>
-
+                <a href="{% url 'signup' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">Daftar Pengguna</a>
                 <form action="{% url 'logout' %}" method="post" class="text-center">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger w-100 py-2 mt-2">Log Keluar</button>

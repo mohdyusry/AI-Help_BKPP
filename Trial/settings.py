@@ -31,6 +31,19 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1','ai-help-bkpp.onrender.com']
 LOGIN_REDIRECT_URL = 'dashboard' # Default redirect after login
 LOGIN_URL = 'signup'  # URL to redirect to for login if not authenticated
 
+# settings.py
+
+# Email Backend to use the console for testing (this sends the email to the console instead of actual email)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# For real email sending, configure your email settings like below
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'your_email@gmail.com'
+# EMAIL_HOST_PASSWORD = 'your_password'
+
 
 # Application definition
 
@@ -107,7 +120,7 @@ DATABASES = {
 #     }
 # }
 
-AUTHENTICATION_BACKENDS = ['your_app.backends.EmailBackend', 'django.contrib.auth.backends.ModelBackend']
+AUTHENTICATION_BACKENDS = ['app1.backends.EmailBackend', 'django.contrib.auth.backends.ModelBackend']
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

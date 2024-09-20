@@ -1,3 +1,4 @@
+import sqlite3
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
@@ -10,10 +11,28 @@ from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Using raw string for the file path
+db_path = r"D:\System_Prototype\BKPP_AI-Help\AI-Help_BKPP\AI-Help_BKPP\db.sqlite3"
+
+# Try to connect to the SQLite database
+try:
+    conn = sqlite3.connect(db_path)
+    df = pd.read_sql_query("SELECT * FROM app1_ticket", conn)
+    conn.close()
+    print("Connection successful and data loaded!")
+except sqlite3.OperationalError as e:
+    print(f"Error connecting to database: {e}")
+
+
+
 # Load the CSV file
 df = pd.read_csv('tickets.csv')
 
 # Convert date columns to datetime with dayfirst=True
+
+# df['date_created'] = pd.to_datetime(df['date_created'], format='%Y-%m-%d', errors='coerce', dayfirst=True)
+# df['date_action'] = pd.to_datetime(df['date_action'], format='%Y-%m-%d', errors='coerce', dayfirst=True)
+
 df['date_created'] = pd.to_datetime(df['date_created'], dayfirst=True)
 df['date_action'] = pd.to_datetime(df['date_action'], dayfirst=True)
 
@@ -21,8 +40,16 @@ df['date_action'] = pd.to_datetime(df['date_action'], dayfirst=True)
 df['resolution_time'] = (df['date_action'] - df['date_created']).dt.total_seconds() / 3600
 
 # Extract unique years from `date_created` and `date_action`
-years_created = df['date_created'].dt.year.unique()
-years_action = df['date_action'].dt.year.unique()
+years_created = [int(year) for year in df['date_created'].dt.year.dropna().unique()]
+years_action = [int(year) for year in df['date_action'].dt.year.dropna().unique()]
+
+# # Calculate resolution time in hours
+# df['resolution_time'] = (df['date_action'] - df['date_created']).dt.total_seconds() / 3600
+#
+# # Extract unique years from `date_created` and `date_action`
+#
+# years_created = df['date_created'].dt.year.unique()
+# years_action = df['date_action'].dt.year.unique()
 
 # Fields available for analysis
 fields = {
@@ -52,6 +79,9 @@ app.css.append_css({'external_url': 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.
 # Layout for the Dashboard
 app.layout = html.Div([
     html.Div([
+        # Return button with JavaScript for redirecting and prompting to close the tab
+        html.Button('Balik Ke Dashboard Admin', id='return-button', className='btn btn-secondary mb-3', n_clicks=0),
+
         html.H1('Dashboard Analisa', className='text-center text-white p-3 bg-dark mb-4'),
 
         # Dropdown for selecting a field to analyze
@@ -141,8 +171,17 @@ app.layout = html.Div([
         html.H2('Analisis Regresi', className='text-center text-secondary'),
         dcc.Graph(id='regression-scatter', className='mb-4'),
         html.Div(id='regression-summary', className='alert alert-info')
-    ], className='container mt-5')
+    ], className='container mt-5'),
+
+    # JavaScript to handle redirect and alert to manually close the tab
+    html.Script("""
+        document.getElementById('return-button').onclick = function() {
+            window.open('http://127.0.0.1:8000/admin_dashboard/', '_self');  // Redirect to admin dashboard
+            alert('Redirecting to Admin Dashboard. Please manually close this tab.');
+        };
+    """)
 ], className='bg-light')
+
 
 
 # Filter data by year

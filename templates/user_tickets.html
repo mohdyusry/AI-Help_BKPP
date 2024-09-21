@@ -53,13 +53,27 @@
         <div class="row">
             <!-- Sidebar Navigation -->
             <nav class="col-md-2 sidebar bg-dark py-4">
-                <h4 class="text-white text-center mt-3">Ai-Help</h4>
-                <a href="{% url 'user_dashboard' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">Kembali Ke Laman Pengguna</a>
-                <form action="{% url 'logout' %}" method="post" class="text-center">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger w-100 py-2 mt-2">Log Keluar</button>
-                </form>
-            </nav>
+    <h4 class="text-white text-center mt-3">Ai-Help</h4>
+
+    {% if request.user.is_user %}
+        <!-- Link for User Role -->
+        <a href="{% url 'user_dashboard' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">
+            Kembali Ke Laman Pengguna
+        </a>
+    {% elif request.user.is_admin %}
+        <!-- Link for Admin Role -->
+        <a href="{% url 'admin_dashboard' %}" class="nav-link text-white text-center mb-2 py-2 bg-primary rounded d-block">
+            Kembali Ke Laman Admin
+        </a>
+    {% endif %}
+
+    <!-- Logout Form -->
+    <form action="{% url 'logout' %}" method="post" class="text-center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger w-100 py-2 mt-2">Log Keluar</button>
+    </form>
+</nav>
+
 
             <!-- Main Content -->
             <main class="col-md-10 ms-sm-auto">

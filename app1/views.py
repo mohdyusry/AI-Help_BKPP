@@ -295,11 +295,21 @@ def user_dashboard(request):
         return render(request, 'user_dashboard.html')
     return redirect('login')
 
+
 @login_required
 def user_tickets(request):
-    if request.user.is_user:
-        tickets = Ticket.objects.filter(user_name=request.user.username, email=request.user.email)
+    # Check if the user is either a regular user or an admin
+    if request.user.is_user or request.user.is_admin:
+        # For regular users, filter tickets by their username and email
+        if request.user.is_user:
+            tickets = Ticket.objects.filter(user_name=request.user.username, email=request.user.email)
+        # For admin, display all tickets
+        elif request.user.is_admin:
+            tickets = Ticket.objects.filter(user_name=request.user.username, email=request.user.email)
+
         return render(request, 'user_tickets.html', {'tickets': tickets})
+
+    # If the user is neither a user nor an admin, redirect to the login page
     return redirect('login')
 
 from django.shortcuts import render, redirect

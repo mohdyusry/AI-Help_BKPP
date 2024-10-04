@@ -2,54 +2,48 @@ import sqlite3
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
-import seaborn as sns
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.impute import SimpleImputer
 import numpy as np
 import matplotlib.pyplot as plt
-
-# Using raw string for the file path
-db_path = r"D:\System_Prototype\BKPP_AI-Help\AI-Help_BKPP\AI-Help_BKPP\db.sqlite3"
-
-# Try to connect to the SQLite database
-try:
-    conn = sqlite3.connect(db_path)
-    df = pd.read_sql_query("SELECT * FROM app1_ticket", conn)
-    conn.close()
-    print("Connection successful and data loaded!")
-except sqlite3.OperationalError as e:
-    print(f"Error connecting to database: {e}")
-
-
 
 # Load the CSV file
 df = pd.read_csv('tickets.csv')
 
+# Using raw string for the file path
+# db_path = r"D:\System_Prototype\BKPP_AI-Help\AI-Help_BKPP\AI-Help_BKPP\db.sqlite3"
+
+# # Try to connect to the SQLite database and load the data
+# try:
+#     conn = sqlite3.connect(db_path)
+#     df = pd.read_sql_query("SELECT * FROM app1_ticket", conn)
+#     conn.close()
+#     print("Connection successful and data loaded!")
+# except sqlite3.OperationalError as e:
+#     print(f"Error connecting to database: {e}")
+
 # Convert date columns to datetime with dayfirst=True
+df['date_created'] = pd.to_datetime(df['date_created'], dayfirst=True, errors='coerce')
+df['date_action'] = pd.to_datetime(df['date_action'], dayfirst=True, errors='coerce')
 
-# df['date_created'] = pd.to_datetime(df['date_created'], format='%Y-%m-%d', errors='coerce', dayfirst=True)
-# df['date_action'] = pd.to_datetime(df['date_action'], format='%Y-%m-%d', errors='coerce', dayfirst=True)
-
-df['date_created'] = pd.to_datetime(df['date_created'], dayfirst=True)
-df['date_action'] = pd.to_datetime(df['date_action'], dayfirst=True)
+# Handle missing values in date columns
+df['date_created'].fillna(method='ffill', inplace=True)
+df['date_action'].fillna(method='ffill', inplace=True)
 
 # Calculate resolution time in hours
 df['resolution_time'] = (df['date_action'] - df['date_created']).dt.total_seconds() / 3600
 
+# Impute missing values in 'resolution_time' column with the mean
+imputer = SimpleImputer(strategy='mean')
+df['resolution_time'] = imputer.fit_transform(df[['resolution_time']])
+
 # Extract unique years from `date_created` and `date_action`
 years_created = [int(year) for year in df['date_created'].dt.year.dropna().unique()]
 years_action = [int(year) for year in df['date_action'].dt.year.dropna().unique()]
-
-# # Calculate resolution time in hours
-# df['resolution_time'] = (df['date_action'] - df['date_created']).dt.total_seconds() / 3600
-#
-# # Extract unique years from `date_created` and `date_action`
-#
-# years_created = df['date_created'].dt.year.unique()
-# years_action = df['date_action'].dt.year.unique()
 
 # Fields available for analysis
 fields = {
@@ -70,11 +64,9 @@ correlation_fields = ['dprt', 'post', 'env', 'report_type', 'hw_type', 'apps_sw'
 # Available chart types
 chart_types = ['bar', 'pie', 'line', 'box', 'histogram']
 
-# Initialize the Dash app
-app = Dash(__name__)
-
-# Apply external stylesheets for Bootstrap and custom styling
-app.css.append_css({'external_url': 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css'})
+# Use external Bootstrap stylesheet
+external_stylesheets = ['https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css']
+app = Dash(__name__, external_stylesheets=external_stylesheets)
 
 # Layout for the Dashboard
 app.layout = html.Div([
@@ -158,8 +150,7 @@ app.layout = html.Div([
         html.Div([
             dcc.Dropdown(
                 id='correlation-dropdown',
-                options=[{'label': name, 'value': field} for field, name in fields.items() if
-                         field in correlation_fields],
+                options=[{'label': name, 'value': field} for field, name in fields.items() if field in correlation_fields],
                 value=correlation_fields,
                 multi=True,
                 className='form-select'
@@ -182,8 +173,16 @@ app.layout = html.Div([
     """)
 ], className='bg-light')
 
+# Filter data by year
+def filter_by_year(df, year_created, year_action):
+    filtered_df = df.copy()
+    if year_created:
+        filtered_df = filtered_df[filtered_df['date_created'].dt.year == year_created]
+    if year_action:
+        filtered_df = filtered_df[filtered_df['date_action'].dt.year == year_action]
+    return filtered_df
 
-
+# Keep the rest of your callbacks as before...
 # Filter data by year
 def filter_by_year(df, year_created, year_action):
     filtered_df = df.copy()

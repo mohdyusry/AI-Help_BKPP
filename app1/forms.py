@@ -1,9 +1,6 @@
 from django import forms
 from .models import Ticket
 
-from django import forms
-from .models import Ticket
-
 class ChatbotForm(forms.Form):
     username = forms.CharField(
         label='Nama Pegawai',
@@ -11,20 +8,20 @@ class ChatbotForm(forms.Form):
         widget=forms.TextInput(attrs={'readonly': 'readonly', 'class': 'form-control'})
     )
     dprt = forms.ChoiceField(
-        label='Department',
-        choices=[('', 'Sila Pilih')],  # Populate in the view
+        label='Bahagian',
+        choices=[('', 'Sila Pilih Bahagian')],  # Populate in the view
         required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     post = forms.ChoiceField(
         label='Jawatan',
-        choices=[('', 'Sila Pilih')], # Populate in the view
+        choices=[('', 'Sila Pilih Jawatan')], # Populate in the view
         required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     env = forms.ChoiceField(
         label='Persekitaran',
-        choices=[('', 'Sila Pilih')], # Populate in the view
+        choices=[('', 'Sila Pilih Persekitaran')], # Populate in the view
         required=True,
         widget=forms.Select(attrs={'class': 'form-control',})
     )
@@ -35,19 +32,19 @@ class ChatbotForm(forms.Form):
     )
     report_type = forms.ChoiceField(
         label='Jenis Laporan',
-        choices=[('', 'Sila Pilih')],
+        choices=[('', 'Sila Pilih Jenis Laporan')],
         required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     hw_type = forms.ChoiceField(
-        label='Jenis Perkakasan',
-        choices=[('', 'Sila Pilih')],  # Choices will be set in the view
+        label='Jenis Perkhidmatan Operasi',
+        choices=[('', 'Sila Pilih Perkhidmatan')],  # Choices will be set in the view
         required=True,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
     apps_sw = forms.ChoiceField(
         label='Perisian/Aplikasi',
-        choices=[('', 'Sila Pilih')],
+        choices=[('', 'Sila Pilih Perisian/Aplikasi')],
         required=False,
         widget=forms.Select(attrs={'class': 'form-control'})
     )
@@ -103,9 +100,3 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = get_user_model()
         fields = ('username', 'email')
-
-
-
-
-
-
